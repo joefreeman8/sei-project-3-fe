@@ -1,16 +1,20 @@
 import React from 'react'
-import axios from 'axios'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+import Navbar from './components/common/Navbar'
+import Home from './components/common/Home'
+import ProfileIndex from './components/profiles/ProfileIndex'
 
 function App() {
-  React.useEffect(() => {
-    const getData = async () => {
-      const res = await axios.get('/api/potentialsniffs')
-      console.log(res.data)
-    }
-    getData()
-  })
-
-  return <h1>Hello World</h1>
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/potentialsniffs" element={<ProfileIndex />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App
