@@ -23,6 +23,7 @@ function ProfileIndex() {
   const [houseTrainedValue, setHouseTrainedValue] = React.useState(null)
   const [dietaryRequirementsValue, setDietaryRequirementsValue] = React.useState('')
   const [childrenValue, setChildrenValue] = React.useState('')
+  const currentUserId = JSON.parse(localStorage.getItem('userId'))
 
   React.useEffect(() => {
     const getData = async () => {
@@ -34,7 +35,7 @@ function ProfileIndex() {
       }
     }
     getData()
-  })
+  }, [])
 
   const handleBodyType = (e) => {
     setBodyTypeValue(e.target.value)
@@ -86,9 +87,9 @@ function ProfileIndex() {
 
   const filterProfiles = (profiles) => {
     return profiles.filter(profile => {
-      console.log(typeof(String(profile.drinking)))
       return (
-        profile.bodyType?.includes(bodyTypeValue) || bodyTypeValue === '') &&
+        profile._id !== currentUserId) &&
+        (profile.bodyType?.includes(bodyTypeValue) || bodyTypeValue === '') &&
         (profile.politicalView?.includes(politicalViewValue) || politicalViewValue === '') &&
         (profile.gender?.includes(genderValue) || genderValue === '') &&
         (profile.sexualOrientation?.includes(sexualOrientationValue) || sexualOrientationValue === '') &&
@@ -106,6 +107,11 @@ function ProfileIndex() {
   return (
     <div>
       <section>
+        <label>Age
+          <div className='slidecontainer'>
+            <input type="range" min="1" max="100" value="50" className='slider' id='myRange' />
+          </div>
+        </label>
         <label>Body Type
           <select onChange={handleBodyType}>
             <option></option>

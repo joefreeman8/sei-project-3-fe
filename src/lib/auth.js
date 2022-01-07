@@ -12,6 +12,10 @@ export function removeToken() {
   window.localStorage.removeItem(tokenName)
 }
 
+export function removeStoredId() {
+  window.localStorage.removeItem('userId')
+}
+
 function getPayload() {
   const token = getToken()
   if (!token) {

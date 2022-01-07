@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { getToken } from './auth'
 
+
+// const currentUserId = JSON.parse(localStorage.getItem('userId'))
 const baseUrl = '/api'
 
 function headers() {
@@ -17,6 +19,18 @@ export function getAllProfiles() {
 
 export function getSingleProfile(userId) {
   return axios.get(`${baseUrl}/potentialsniffs/${userId}`, headers())
+}
+
+
+
+//* USER Requests 
+
+export function editUserProfile(currentUserId, formData) {
+  return axios.put(`${baseUrl}/account/${currentUserId}`, formData, headers())
+}
+
+export function deleteUserProfile(currentUserId) {
+  return axios.delete(`${baseUrl}/account/${currentUserId}`, headers())
 }
 
 
