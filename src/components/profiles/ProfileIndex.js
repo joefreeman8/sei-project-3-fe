@@ -23,6 +23,7 @@ function ProfileIndex() {
   const [houseTrainedValue, setHouseTrainedValue] = React.useState(null)
   const [dietaryRequirementsValue, setDietaryRequirementsValue] = React.useState('')
   const [childrenValue, setChildrenValue] = React.useState('')
+  const currentUserId = JSON.parse(localStorage.getItem('userId'))
 
   React.useEffect(() => {
     const getData = async () => {
@@ -87,7 +88,8 @@ function ProfileIndex() {
   const filterProfiles = (profiles) => {
     return profiles.filter(profile => {
       return (
-        profile.bodyType?.includes(bodyTypeValue) || bodyTypeValue === '') &&
+        profile._id !== currentUserId) &&
+        (profile.bodyType?.includes(bodyTypeValue) || bodyTypeValue === '') &&
         (profile.politicalView?.includes(politicalViewValue) || politicalViewValue === '') &&
         (profile.gender?.includes(genderValue) || genderValue === '') &&
         (profile.sexualOrientation?.includes(sexualOrientationValue) || sexualOrientationValue === '') &&
