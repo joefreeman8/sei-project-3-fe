@@ -11,7 +11,6 @@ function ProfileCard({ _id, name, picture, elevatorPitch, age }) {
       <CardActionArea href={`/potentialsniffs/${_id}`}>
         <CardMedia
           component="img"
-          height='140'
           image={picture}
           alt="profile image"
         />
