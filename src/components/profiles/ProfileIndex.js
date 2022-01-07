@@ -34,7 +34,7 @@ function ProfileIndex() {
       }
     }
     getData()
-  })
+  }, [])
 
   const handleBodyType = (e) => {
     setBodyTypeValue(e.target.value)

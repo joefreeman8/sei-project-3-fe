@@ -1,32 +1,33 @@
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Account() {
   localStorage.getItem('token')
 
-  console.log(localStorage.getItem('token'))
+  const currentUserId = JSON.parse(localStorage.getItem('userId'))
+
 
   return (
     <div>
       <div>
         <div>
           <button className="contained">
-            {/* <Link to={`/account/${userId}`}> */}
+            <Link to={`/account/${currentUserId}`}>
               View Account
-            {/* </Link> */}
+            </Link>
           </button>
         </div>
         <div>
           <button className="contained">
-            {/* <Link to={`/account/${userId}/edit`}> */}
+            <Link to={`/account/${currentUserId}/edit`}>
               Edit Account
-            {/* </Link> */}
+            </Link>
           </button>
         </div>
         <div>
           <button className="contained">
-            {/* <Link to={`/account/${userId}`}> */}
+            <Link to={`/account/${currentUserId}`}>
               Delete Account
-            {/* </Link> */}
+            </Link>
           </button>
         </div>
       </div>
