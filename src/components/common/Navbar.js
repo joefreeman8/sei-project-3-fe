@@ -10,6 +10,7 @@ function Navbar() {
       <Link to="/potentialsniffs">Profile Index</Link>
       <Link to="/login">Log In</Link>
       <Link to="/register">Register</Link>
+      <Link to="/chat">Chat</Link>
     </nav>
   )
 }

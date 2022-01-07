@@ -5,7 +5,7 @@ const baseUrl = '/api'
 
 function headers() {
   return {
-    headers: { Authorization: `Bearer ${getToken}` },
+    headers: { Authorization: `Bearer ${getToken()}` },
   }
 }
 
@@ -15,6 +15,9 @@ export function getAllProfiles() {
   return axios.get(`${baseUrl}/potentialsniffs`)
 }
 
+export function getSingleProfile(userId) {
+  return axios.get(`${baseUrl}/potentialsniffs/${userId}`, headers())
+}
 
 
 //* Register/Login User
@@ -30,6 +33,10 @@ export function loginUser(formData) {
 
 //* Chat
 
-export function createMessage(cheeseId, formData) {
-  return axios.post(`${baseUrl}/cheeses/${cheeseId}/comments`, formData, headers())
+export function getAllChats() {
+  return axios.get(`${baseUrl}/chat`, headers())
+}
+
+export function getSingleChat(chatId) {
+  return axios.get(`${baseUrl}/chat/${chatId}`, headers())
 }

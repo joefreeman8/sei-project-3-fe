@@ -1,10 +1,13 @@
-function Account() {
+import { Link } from 'react-router-dom'
+
+
+function Account({ currentUserId }) {
 
   return (
     <div>
       <div>
         <div>
-          <button className="contained">View Profile</button>
+          <button className="contained"><Link to={`/account/${currentUserId}`}>View Profile</Link></button>
         </div>
         <div>
           <button className="contained">Edit Profile</button>

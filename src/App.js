@@ -6,6 +6,7 @@ import Home from './components/common/Home'
 import ProfileIndex from './components/profiles/ProfileIndex'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
+import ChatIndex from './components/chat/ChatIndex'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/potentialsniffs" element={<ProfileIndex />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/chat" element={<ChatIndex />} />
       </Routes>
     </BrowserRouter>
   )
