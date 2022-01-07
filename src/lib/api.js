@@ -5,11 +5,7 @@ const baseUrl = '/api'
 
 function headers() {
   return {
-<<<<<<< HEAD
     headers: { Authorization: `Bearer ${getToken()}` },
-=======
-    headers: { Authorization: `Bearer ${getToken}` },
->>>>>>> development
   }
 }
 
