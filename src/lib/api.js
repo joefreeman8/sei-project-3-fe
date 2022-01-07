@@ -1,13 +1,13 @@
 import axios from 'axios'
-// import { getToken } from './auth'
+import { getToken } from './auth'
 
 const baseUrl = '/api'
 
-// function headers() {
-//   return {
-//     headers: { Authorization: `Bearer ${getToken}` },
-//   }
-// }
+function headers() {
+  return {
+    headers: { Authorization: `Bearer ${getToken()}` },
+  }
+}
 
 // * Profile Requests
 
@@ -15,6 +15,18 @@ export function getAllProfiles() {
   return axios.get(`${baseUrl}/potentialsniffs`)
 }
 
+
+
+
+//* USER Requests 
+
+export function editUserProfile(userId, formData) {
+  return axios.put(`${baseUrl}/account/${userId}`, formData, headers())
+}
+
+export function deleteUserProfile(userId) {
+  return axios.delete(`${baseUrl}/account/${userId}`, headers())
+}
 
 
 //* Register/Login User
