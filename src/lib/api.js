@@ -5,7 +5,11 @@ const baseUrl = '/api'
 
 function headers() {
   return {
+<<<<<<< HEAD
     headers: { Authorization: `Bearer ${getToken()}` },
+=======
+    headers: { Authorization: `Bearer ${getToken}` },
+>>>>>>> development
   }
 }
 
@@ -37,4 +41,11 @@ export function registerUser(formData) {
 
 export function loginUser(formData) {
   return axios.post(`${baseUrl}/login`, formData)
+}
+
+
+//* Chat
+
+export function createMessage(cheeseId, formData) {
+  return axios.post(`${baseUrl}/cheeses/${cheeseId}/comments`, formData, headers())
 }
