@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { deleteUserProfile } from '../../lib/api'
+import { removeStoredId, removeToken } from '../../lib/auth'
 
 function Account() {
   const navigate = useNavigate()
@@ -11,6 +12,8 @@ function Account() {
     if (window.confirm('Are you sure you want to delete your account?')) {
       try {
         await deleteUserProfile(currentUserId)
+        removeToken()
+        removeStoredId()
         navigate('/')
       } catch (err) {
         console.log(err)
