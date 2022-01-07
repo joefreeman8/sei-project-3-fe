@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom'
 
-function Account(userId) {
-
 function Account() {
   localStorage.getItem('token')
 
@@ -16,14 +14,14 @@ function Account() {
         </div>
         <div>
           <button className="contained">
-            <Link to={`/account/${userId}/edit`}>
+            <Link to={`/account/${currentUserId}/edit`}>
               Edit Account
             </Link>
           </button>
         </div>
         <div>
           <button className="contained">
-            <Link to={`/account/${userId}`}>
+            <Link to={`/account/${currentUserId}`}>
               Delete Account
             </Link>
           </button>
