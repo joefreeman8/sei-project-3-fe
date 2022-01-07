@@ -7,11 +7,10 @@ import { CardActionArea } from '@mui/material'
 
 function ProfileCard({ _id, name, picture, elevatorPitch, age }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, mb: 1 }} >
       <CardActionArea href={`/potentialsniffs/${_id}`}>
         <CardMedia
           component="img"
-          height='140'
           image={picture}
           alt="profile image"
         />
@@ -22,8 +21,8 @@ function ProfileCard({ _id, name, picture, elevatorPitch, age }) {
           <Typography gutterBottom variant="body1" component="div">
             {age}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {elevatorPitch}
+          <Typography variant="body2" color="text.secondary" component="div">
+            {`${elevatorPitch.substring(0, 50)}...`}
           </Typography>
         </CardContent>
       </CardActionArea>
