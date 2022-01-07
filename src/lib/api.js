@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { getToken } from './auth'
 
+
+// const currentUserId = JSON.parse(localStorage.getItem('userId'))
 const baseUrl = '/api'
 
 function headers() {
