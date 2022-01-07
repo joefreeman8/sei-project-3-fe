@@ -86,7 +86,6 @@ function ProfileIndex() {
 
   const filterProfiles = (profiles) => {
     return profiles.filter(profile => {
-      console.log(typeof(String(profile.drinking)))
       return (
         profile.bodyType?.includes(bodyTypeValue) || bodyTypeValue === '') &&
         (profile.politicalView?.includes(politicalViewValue) || politicalViewValue === '') &&
@@ -106,6 +105,11 @@ function ProfileIndex() {
   return (
     <div>
       <section>
+        <label>Age
+          <div className='slidecontainer'>
+            <input type="range" min="1" max="100" value="50" className='slider' id='myRange' />
+          </div>
+        </label>
         <label>Body Type
           <select onChange={handleBodyType}>
             <option></option>

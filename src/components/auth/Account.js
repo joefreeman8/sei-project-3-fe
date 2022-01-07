@@ -1,4 +1,9 @@
+import axios from 'axios'
+
 function Account() {
+  localStorage.getItem('token')
+
+  console.log(localStorage.getItem('token'))
 
   return (
     <div>
