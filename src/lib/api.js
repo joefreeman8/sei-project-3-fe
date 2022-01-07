@@ -20,12 +20,12 @@ export function getAllProfiles() {
 
 //* USER Requests 
 
-export function editUserProfile(userId, formData) {
-  return axios.put(`${baseUrl}/account/${userId}`, formData, headers())
+export function editUserProfile(currentUserId, formData) {
+  return axios.put(`${baseUrl}/account/${currentUserId}`, formData, headers())
 }
 
-export function deleteUserProfile(userId) {
-  return axios.delete(`${baseUrl}/account/${userId}`, headers())
+export function deleteUserProfile(currentUserId) {
+  return axios.delete(`${baseUrl}/account/${currentUserId}`, headers())
 }
 
 

@@ -1,45 +1,43 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { deleteUserProfile } from '../../lib/api'
 
-<<<<<<< HEAD
-=======
-function Account(userId) {
-
->>>>>>> development
 function Account() {
+  const navigate = useNavigate()
   localStorage.getItem('token')
 
   const currentUserId = JSON.parse(localStorage.getItem('userId'))
-<<<<<<< HEAD
 
-=======
->>>>>>> development
+  const handleDelete = async () => {
+    if (window.confirm('Are you sure you want to delete your account?')) {
+      try {
+        await deleteUserProfile(currentUserId)
+        navigate('/')
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
 
   return (
     <div>
       <div>
         <div>
-          <button className="contained">
-<<<<<<< HEAD
-            <Link to={`/account/${currentUserId}`}>
-              View Account
-            </Link>
-          </button>
-=======
-            <Link to={`/account/${currentUserId}`}>View Profile</Link></button>
->>>>>>> development
+          <Link to={`/account/${currentUserId}`}>
+            <button className="contained">
+              View Profile
+            </button>
+          </Link>
         </div>
         <div>
-          <button className="contained">
-            <Link to={`/account/${currentUserId}/edit`}>
-              Edit Account
-            </Link>
-          </button>
+          <Link to={`/account/${currentUserId}/edit`}>
+            <button className="contained">
+              Edit Profile
+            </button>
+          </Link>
         </div>
         <div>
-          <button className="contained">
-            <Link to={`/account/${currentUserId}`}>
-              Delete Account
-            </Link>
+          <button className="contained" onClick={handleDelete}>
+            Delete Account
           </button>
         </div>
       </div>
