@@ -24,7 +24,7 @@ function Login() {
       }
     }
     getData()
-  })
+  }, [])
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value)

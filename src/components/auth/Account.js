@@ -8,23 +8,19 @@ function Account() {
   return (
     <div>
       <div>
-        <div>
-          <button className="contained">
-            <Link to={`/account/${currentUserId}`}>View Profile</Link></button>
+        <div>          
+          <Link to={`/account/${currentUserId}`}>
+            <button className="contained">View Profile</button></Link>
         </div>
-        <div>
-          <button className="contained">
-            <Link to={`/account/${currentUserId}/edit`}>
-              Edit Account
-            </Link>
-          </button>
+        <div>         
+          <Link to={`/account/${currentUserId}/edit`}>
+            <button className="contained">Edit Account</button>
+          </Link>          
         </div>
-        <div>
-          <button className="contained">
-            <Link to={`/account/${currentUserId}`}>
-              Delete Account
-            </Link>
-          </button>
+        <div>          
+          <Link to={`/account/${currentUserId}`}>
+            <button className="contained">Delete Account</button>
+          </Link>
         </div>
       </div>
     </div>
