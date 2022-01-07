@@ -7,6 +7,7 @@ import ProfileIndex from './components/profiles/ProfileIndex'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import Account from './components/auth/Account'
+import ChatIndex from './components/chat/ChatIndex'
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        
+        <Route path="/chat" element={<ChatIndex />} />
       </Routes>
     </BrowserRouter>
   )
