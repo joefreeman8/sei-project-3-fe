@@ -36,6 +36,7 @@ export function isAuthenticated() {
 
 export function isOwner(userId) {
   const payload = getPayload()
+  console.log(userId)
   if (!payload) {
     return false
   }
