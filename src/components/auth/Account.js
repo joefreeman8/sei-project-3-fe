@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 import { Link } from 'react-router-dom'
 
 
 function Account(userId) {
+=======
+import axios from 'axios'
+
+function Account() {
+  localStorage.getItem('token')
+
+  console.log(localStorage.getItem('token'))
+>>>>>>> development
 
   return (
     <div>
