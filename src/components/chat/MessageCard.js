@@ -1,6 +1,6 @@
 //import { isOwner } from '../../lib/auth'
 
-function Message({ content, profile }) {
+function MessageCard({ chatId, messageId }) {
   return (
     <div className="card">
       <div className="media">
@@ -20,4 +20,4 @@ function Message({ content, profile }) {
   )
 }
 
-export default Message
+export default MessageCard

@@ -1,6 +1,14 @@
 import React from 'react'
 import ChatCard from './ChatCard'
 import { getAllChats } from '../../lib/api'
+//import Container from '@mui/material/Container'
+
+
+//import Avatar from '@material-ui/core/Avatar'
+import { Row, Item } from '@mui-treasury/components/flex'
+//import { useDynamicAvatarStyles } from '@mui-treasury/styles/avatar/dynamic'
+//import Button from '@material-ui/core/Button'
+
 
 function ChatIndex() {
 
@@ -25,21 +33,22 @@ function ChatIndex() {
   console.log(chats)
 
   return (
-    <section>
-      <div>
-        <h1>Hello</h1>
-      </div>
-      <div>
-        {chats?.map(chat => (
-          <ChatCard 
-            key={chat._id}
-            senderId={chat.userTwo}
-            chatId={chat._id}
-          />
-        )) 
-        }
-      </div>
-    </section>
+    <Row gap={2} p={2.5}>
+      <Row wrap grow gap={0.5} minWidth={0}>
+        <Item grow minWidth={0}>
+          <div>
+            {chats?.map(chat => (
+              <ChatCard 
+                key={chat._id}
+                senderId={chat.userTwo}
+                chatId={chat._id}
+              />
+            )) 
+            }
+          </div>
+        </Item>
+      </Row>
+    </Row>
   )
 }
 
