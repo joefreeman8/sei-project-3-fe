@@ -8,6 +8,7 @@ import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import Account from './components/auth/Account'
 import ChatIndex from './components/chat/ChatIndex'
+import ProfileShow from './components/profiles/ProfileShow'
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/chat" element={<ChatIndex />} />
+        <Route path="/potentialsniffs/:userId" element={<ProfileShow />} />
+        <Route path="/account/:userId" element={<ProfileShow />} />
       </Routes>
     </BrowserRouter>
   )
