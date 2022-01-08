@@ -6,11 +6,11 @@ function MessageCard({ chatId, messageId }) {
       <div className="media">
         <div className="media-content">
           <div className="card-body">
-            <p>
+            {/* <p>
               <strong>{profile.name}</strong>
               <br />
               {content}
-            </p>
+            </p> */}
             {/* {isOwner(profile._id) &&
               <button className="button" onClick={handleDelete}>X</button>} */}
           </div>
