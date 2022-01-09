@@ -17,6 +17,7 @@ function ProfileShow() {
   const [profile, setProfile] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !profile && !isError
+  const currentUserId = JSON.parse(localStorage.getItem('userId'))
 
   React.useEffect(() => {
     const getData = async () => {
@@ -31,59 +32,58 @@ function ProfileShow() {
   }, [userId])
 
 
-
-
   return (
     <Card sx={{ width: '80%', mx: 'auto', display: 'flex' }} >
       {isError && <Error />}
       {isLoading && <Loading />}
       {profile && (
         <>
+
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-            <Grid item xs={3} key={profile._id}>
+            <Grid item xs={4}>
               <CardMedia
                 component="img"
                 image={profile.picture}
                 alt={profile.name}
-                sx={{ width: '100%' }}
+                sx={{ width: '100%', p: 1 }}
               />
+              <Typography variant="h6" color="text.secondary" sx={{ p: 2 }}>
+                {profile.elevatorPitch}
+              </Typography>
             </Grid>
-            <Grid item xs={3}>
+
+            <Grid item xs={6}>
               <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
-                  Age: {profile.age}
-                  <br />
-                  Height: {profile.height}cm
-                  <br />
-                  {profile.weight}
-                  {profile.bodyType}
-                  {profile.animalType}
-                  {profile.politicalView}
-                  {profile.gender}
-                  {profile.sexualOrientation}
-                  {profile.lookingFor}
-                  {profile.human}
-                  {profile.drinking}
-                  {profile.smoking}
-                  {profile.religion}
-                  {profile.houseTrained}
-                  {profile.dietaryRequirements}
-                  {profile.children}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {profile.elevatorPitch}
+                <Typography gutterBottom variant="body2" component="div">
+                  {profile.age && <div><strong>Age: </strong>{profile.age}</div>}
+                  {profile.height && <div><strong>Height: </strong>{profile.height}cm</div>}
+                  {profile.weight && <div><strong>Weight: </strong>{profile.weight}kg</div>}
+                  {profile.bodyType && <div><strong>Body Type: </strong>{profile.bodyType}</div>}
+                  {profile.animalType && <div><strong>Animal Type: </strong>{profile.animalType}</div>}
+                  {profile.politicalView && <div><strong>Political View: </strong>{profile.politicalView}</div>}
+                  {profile.gender && <div><strong>Gender: </strong>{profile.gender}</div>}
+                  {profile.sexualOrientation && <div><strong>Sexual Orientation: </strong>{profile.sexualOrientation}</div>}
+                  {profile.lookingFor && <div><strong>Looking For: </strong>{profile.lookingFor}</div>}
+                  {profile.human && <div><strong>Human: </strong>{profile.human}</div>}
+                  {profile.drinking && <div><strong>Drinking: </strong>{profile.drinking ? 'Yes' : 'No'}</div>}
+                  {profile.smoking && <div><strong>Smoking: </strong>{profile.smoking ? 'Yes' : 'No'}</div>}
+                  {profile.religion && <div><strong>Religion: </strong>{profile.religion}</div>}
+                  {profile.houseTrained && <div><strong>House Trained: </strong>{profile.houseTrained ? 'Yes' : 'No'}</div>}
+                  {profile.dietaryRequirements && <div><strong>Dietary Requirements: </strong>{profile.dietaryRequirements}</div>}
+                  {profile.children && <div><strong>Children: </strong>{profile.children}</div>}
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small" href='/chat'>Message</Button>
+                <Button size="large" href={currentUserId === userId ? `/account/${currentUserId}/edit` : '/chat'}>
+                  {currentUserId === userId ? 'Edit Page' : 'Message'}
+                </Button>
               </CardActions>
             </Grid>
+
           </Grid>
         </>
-
       )}
     </Card>
-    
   )
 }
 
