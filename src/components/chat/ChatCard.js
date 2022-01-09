@@ -3,6 +3,10 @@
 
 import { getSingleProfile, getSingleChat } from '../../lib/api'
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+import Box  from '@mui/material/Box'
+//import Divider from '@material-ui/core/Divider'
 
 function ChatCard({ senderId, chatId }) {
 
@@ -31,10 +35,13 @@ function ChatCard({ senderId, chatId }) {
   console.log(chat)
 
   return (
-    <div>
-      <h1>{sender?.name}</h1>
-      <p>{chat?.messages[chat.messages.length - 1].text}</p>
-    </div>
+    <Link to={`/chat/${chatId}`}>
+      <Box minHeight={100} bgcolor={'#F4F7FA'} borderRadius={1} className="message-box">
+        <h3 className="sender-name">{sender?.name}</h3>
+        {/* <Divider variant="middle"/> */}
+        <p className="sender-message">{chat?.messages[chat.messages.length - 1].text}</p>
+      </Box>
+    </Link>
   )
 }
 

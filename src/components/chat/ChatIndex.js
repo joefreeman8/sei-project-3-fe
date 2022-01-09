@@ -1,12 +1,21 @@
 import React from 'react'
 import ChatCard from './ChatCard'
 import { getAllChats } from '../../lib/api'
+//import Container from '@mui/material/Container'
+
+
+//import Avatar from '@material-ui/core/Avatar'
+import { Row, Item } from '@mui-treasury/components/flex'
+//import { useDynamicAvatarStyles } from '@mui-treasury/styles/avatar/dynamic'
+//import Button from '@material-ui/core/Button'
+
 
 function ChatIndex() {
 
   const [chats, setChats] = React.useState([])
 
-
+  const [searchValue, setSearchValue] = React.useState('')
+  //const [users, setUsers] = React.useState(null)
 
   React.useEffect(() => {
     const getChatData = async () => {
@@ -23,23 +32,63 @@ function ChatIndex() {
 
 
   console.log(chats)
+  
+
+  //* Search Bar
+
+  const handleSubmit = (e) => {
+    e.preventDefault() 
+    searchValue.toLowerCase()
+  }
+
+  const handleChange = (e) => {
+    console.log(e.target.value)
+    setSearchValue(e.target.value)
+  }
+
+  // const searchedUser = (users) => {
+  //   return users.filter(user => {
+      
+  //   })
+  // }
+
 
   return (
-    <section>
+    <div>
       <div>
-        <h1>Hello</h1>
+        <h3>Message Your Potential Sniffs</h3>
       </div>
+
       <div>
-        {chats?.map(chat => (
-          <ChatCard 
-            key={chat._id}
-            senderId={chat.userTwo}
-            chatId={chat._id}
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            onChange={handleChange}
+            placeholder="search by name"
           />
-        )) 
-        }
+          <div>
+            <button type="submit" onSubmit={handleSubmit}>Search</button>
+          </div>
+        </form>
       </div>
-    </section>
+
+      <Row gap={2} p={2.5}>
+        <Row wrap grow gap={0.5} minWidth={0}>
+          <Item grow minWidth={0}>
+            <div>
+              {chats?.map(chat => (
+                <ChatCard 
+                  key={chat._id}
+                  senderId={chat.userTwo}
+                  chatId={chat._id}
+                />
+              )) 
+              }
+            </div>
+          </Item>
+        </Row>
+      </Row>
+    </div>
   )
 }
 

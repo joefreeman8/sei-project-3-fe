@@ -19,6 +19,7 @@ function Navbar() {
         <>
           <Link to="/potentialsniffs">Profile Index</Link>
           <Link to="/account">Account</Link>
+          <Link to="/chat">Messages</Link>
         </>
       )}
       {isAuth ? (

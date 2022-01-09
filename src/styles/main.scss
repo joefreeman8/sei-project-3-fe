@@ -14,3 +14,21 @@
 .contained {
   padding: 10px 20px;
 }
+
+
+.message-box {
+  margin: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  width: 400px;
+}
+
+
+.sender-name  {
+  padding: 20px 0 5px 20px;
+}
+
+.sender-message {
+  padding: 0 0 10px 20px;
+  color: gray;
+  font-style: italic;
+}

@@ -53,3 +53,14 @@ export function getAllChats() {
 export function getSingleChat(chatId) {
   return axios.get(`${baseUrl}/chat/${chatId}`, headers())
 }
+
+//* Message
+
+export function getAllMessages(chatId, messageId) {
+  return axios.get(`${baseUrl}/chat/${chatId}/messages/${messageId}`, headers() )
+}
+
+export function createSingleMessage(chatId, formData) {
+  return axios.post(`${baseUrl}/chat/${chatId}/messages/`, formData, headers())
+}
+
