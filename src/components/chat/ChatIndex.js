@@ -14,7 +14,8 @@ function ChatIndex() {
 
   const [chats, setChats] = React.useState([])
 
-
+  const [searchValue, setSearchValue] = React.useState('')
+  //const [users, setUsers] = React.useState(null)
 
   React.useEffect(() => {
     const getChatData = async () => {
@@ -31,24 +32,63 @@ function ChatIndex() {
 
 
   console.log(chats)
+  
+
+  //* Search Bar
+
+  const handleSubmit = (e) => {
+    e.preventDefault() 
+    searchValue.toLowerCase()
+  }
+
+  const handleChange = (e) => {
+    console.log(e.target.value)
+    setSearchValue(e.target.value)
+  }
+
+  // const searchedUser = (users) => {
+  //   return users.filter(user => {
+      
+  //   })
+  // }
+
 
   return (
-    <Row gap={2} p={2.5}>
-      <Row wrap grow gap={0.5} minWidth={0}>
-        <Item grow minWidth={0}>
+    <div>
+      <div>
+        <h3>Message Your Potential Sniffs</h3>
+      </div>
+
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            onChange={handleChange}
+            placeholder="search by name"
+          />
           <div>
-            {chats?.map(chat => (
-              <ChatCard 
-                key={chat._id}
-                senderId={chat.userTwo}
-                chatId={chat._id}
-              />
-            )) 
-            }
+            <button type="submit" onSubmit={handleSubmit}>Search</button>
           </div>
-        </Item>
+        </form>
+      </div>
+
+      <Row gap={2} p={2.5}>
+        <Row wrap grow gap={0.5} minWidth={0}>
+          <Item grow minWidth={0}>
+            <div>
+              {chats?.map(chat => (
+                <ChatCard 
+                  key={chat._id}
+                  senderId={chat.userTwo}
+                  chatId={chat._id}
+                />
+              )) 
+              }
+            </div>
+          </Item>
+        </Row>
       </Row>
-    </Row>
+    </div>
   )
 }
 

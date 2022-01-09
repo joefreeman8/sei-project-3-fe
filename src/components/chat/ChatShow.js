@@ -4,7 +4,8 @@ import { useParams } from 'react-router'
 // import { Link } from 'react-router-dom'
 import { getSingleChat } from '../../lib/api'
 import { createSingleMessage } from '../../lib/api'
-//import MessageCard from './Message'
+//import MessageCard from './MessageCard'
+//import { v4 as uuid } from 'uuid'
 
 
 function ChatShow() {
@@ -12,6 +13,7 @@ function ChatShow() {
 
   const [allMessages, setAllMessages] = React.useState([])
   const [message, setMessage] = React.useState('')
+  //const [sender, setSender] = React.useState('')
 
   const fetchChat = React.useCallback(() => {
     const getData = async () => {
@@ -53,6 +55,18 @@ function ChatShow() {
   return (
     <div>
       <p>hello</p>
+      <div>
+        <ul>
+          {/* {allMessages.map(singleMessage => (
+            <li>
+              <MessageCard
+                key={uuid()}
+                content={singleMessage.content}
+              />
+            </li>
+          ))} */}
+        </ul>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="control">
           <textarea  
