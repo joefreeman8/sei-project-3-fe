@@ -9,6 +9,7 @@ import Login from './components/auth/Login'
 import Account from './components/auth/Account'
 import ChatIndex from './components/chat/ChatIndex'
 import ProfileShow from './components/profiles/ProfileShow'
+import ProfileEdit from './components/profiles/ProfileEdit'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/potentialsniffs" element={<ProfileIndex />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/account/:userId/edit" element={<ProfileEdit />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/chat" element={<ChatIndex />} />

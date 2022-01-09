@@ -48,11 +48,13 @@ function ProfileShow() {
                 sx={{ width: '100%' }}
               />
             </Grid>
-            <Grid item xs={3} key={profile._id}>
+            <Grid item xs={3}>
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {profile.age}
-                  {profile.height}
+                <Typography gutterBottom variant="h6" component="div">
+                  Age: {profile.age}
+                  <br />
+                  Height: {profile.height}cm
+                  <br />
                   {profile.weight}
                   {profile.bodyType}
                   {profile.animalType}

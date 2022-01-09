@@ -24,11 +24,11 @@ export function getSingleProfile(userId) {
 
 //* USER Requests 
 
-export function editUserProfile(userId, formData) {
-  return axios.put(`${baseUrl}/account/${userId}`, formData, headers())
+export function editProfile(userId, formData) {
+  return axios.put(`${baseUrl}/account/${userId}/edit`, formData, headers())
 }
 
-export function deleteUserProfile(userId) {
+export function deleteProfile(userId) {
   return axios.delete(`${baseUrl}/account/${userId}`, headers())
 }
 
