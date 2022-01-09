@@ -12,6 +12,7 @@ function ProfileIndex() {
   const [isError, setIsError] = React.useState(false)
   const isLoading = !profiles && !isError
   const [showFilters, setShowFilters] = React.useState(false)
+  
   const toggleFilterShow = () => setShowFilters(!showFilters)
 
   const [ageMinValue, setAgeMinValue] = React.useState(null)
