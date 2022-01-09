@@ -5,12 +5,21 @@ import Box from '@mui/material/Box'
 import Error from '../common/Error'
 import Loading from '../common/Loading'
 import ProfileCard from './ProfileCard'
+import { Button } from '@mui/material'
 
 function ProfileIndex() {
   const [profiles, setProfiles] = React.useState([])
   const [isError, setIsError] = React.useState(false)
   const isLoading = !profiles && !isError
+  const [showFilters, setShowFilters] = React.useState(false)
+  const toggleFilterShow = () => setShowFilters(!showFilters)
 
+  const [ageMinValue, setAgeMinValue] = React.useState(null)
+  const [ageMaxValue, setAgeMaxValue] = React.useState(null)
+  const [weightMinValue, setWeightMinValue] = React.useState(null)
+  const [weightMaxValue, setWeightMaxValue] = React.useState(null)
+  const [heightMinValue, setHeightMinValue] = React.useState(null)
+  const [heightMaxValue, setHeightMaxValue] = React.useState(null)
   const [bodyTypeValue, setBodyTypeValue] = React.useState('')
   const [politicalViewValue, setPoliticalViewValue] = React.useState('')
   const [genderValue, setGenderValue] = React.useState('')
@@ -36,6 +45,30 @@ function ProfileIndex() {
     }
     getData()
   }, [])
+
+  const handleMinAge = (e) => {
+    setAgeMinValue(e.target.value)
+  }
+
+  const handleMaxAge = (e) => {
+    setAgeMaxValue(e.target.value)
+  }
+
+  const handleMinWeight = (e) => {
+    setWeightMinValue(e.target.value)
+  }
+
+  const handleMaxWeight = (e) => {
+    setWeightMaxValue(e.target.value)
+  }
+
+  const handleMinHeight = (e) => {
+    setHeightMinValue(e.target.value)
+  }
+
+  const handleMaxHeight = (e) => {
+    setHeightMaxValue(e.target.value)
+  }
 
   const handleBodyType = (e) => {
     setBodyTypeValue(e.target.value)
@@ -89,6 +122,12 @@ function ProfileIndex() {
     return profiles.filter(profile => {
       return (
         profile._id !== currentUserId) &&
+        (profile.age >= ageMinValue || ageMinValue === null) &&
+        (profile.age <= ageMaxValue || ageMaxValue === null) &&
+        (profile.weight >= weightMinValue || weightMinValue === null) &&
+        (profile.weight <= weightMaxValue || weightMaxValue === null) &&
+        (profile.height >= heightMinValue || heightMinValue === null) &&
+        (profile.height <= heightMaxValue || heightMaxValue === null) &&
         (profile.bodyType?.includes(bodyTypeValue) || bodyTypeValue === '') &&
         (profile.politicalView?.includes(politicalViewValue) || politicalViewValue === '') &&
         (profile.gender?.includes(genderValue) || genderValue === '') &&
@@ -104,151 +143,209 @@ function ProfileIndex() {
     })
   }
 
+  const resetFilters = () => {
+    setAgeMinValue(null)
+    setAgeMaxValue(null)
+    setWeightMinValue(null)
+    setWeightMaxValue(null)
+    setHeightMinValue(null)
+    setHeightMaxValue(null)
+    setBodyTypeValue('')
+    setPoliticalViewValue('')
+    setGenderValue('')
+    setSexualOrientationValue('')
+    setLookingFoValue('')
+    setHumanValue('')
+    setDrinkingValue(null)
+    setSmokingValue(null)
+    setReligionValue('')
+    setHouseTrainedValue(null)
+    setDietaryRequirementsValue('')
+    setChildrenValue('')
+    setShowFilters(false)
+  }
+
   return (
     <div>
-      <section>
-        <label>Age
-          <div className='slidecontainer'>
-            <input type="range" min="1" max="100" value="50" className='slider' id='myRange' />
-          </div>
-        </label>
-        <label>Body Type
-          <select onChange={handleBodyType}>
-            <option></option>
-            <option>Toned</option>
-            <option>Average</option>
-            <option>Large</option>
-            <option>Muscular</option>
-            <option>Slim</option>
-            <option>Stocky</option>
-          </select>
-        </label>
-        <label>Political View
-          <select onChange={handlePoliticalView}>
-            <option></option>
-            <option>Liberal</option>
-            <option>Moderate</option>
-            <option>Conservative</option>
-            <option>Other</option>
-            <option>Prefer Not to Say</option>
-          </select>
-        </label>
-        <label>Gender
-          <select onChange={handleGender}>
-            <option></option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Non-Binary</option>
-            <option>Other</option>
-            <option>Prefer Not to Say</option>
-          </select>
-        </label>
-        <label>Sexual Orientation
-          <select onChange={handleSexualOrientation}>
-            <option></option>
-            <option>Gay</option>
-            <option>Straight</option>
-            <option>Bisexual</option>
-            <option>Lesbian</option>
-            <option>Allosexual</option>
-            <option>Androsexual</option>
-            <option>Asexual</option>
-            <option>Autosexual</option>
-            <option>Bicurious</option>
-            <option>Demisexual</option>
-            <option>Fluid</option>
-            <option>Graysexual</option>
-            <option>Gynesexual</option>
-            <option>Monosexual</option>
-            <option>Omnisexual</option>
-            <option>Pansexual</option>
-            <option>Polysexual</option>
-            <option>Queer</option>
-            <option>Questioning</option>
-            <option>Skoliosexual</option>
-            <option>Spectrasexual</option>
-            <option>Not Listed</option>
-          </select>
-        </label>
-        <label>Looking For
-          <select onChange={handleLookingFor}>
-            <option></option>
-            <option>Chat</option>
-            <option>Dates</option>
-            <option>Friends</option>
-            <option>Networking</option>
-            <option>Relationship</option>
-            <option>Right Now</option>
-          </select>
-        </label>
-        <label>Human
-          <select onChange={handleHuman}>
-            <option></option>
-            <option>Have Human</option>
-            <option>Want Human</option>
-            <option>Don&apos;t Want Human</option>
-          </select>
-        </label>
-        <label>Drinking
-          <select onChange={handleDrinking}>
-            <option value={null}></option>
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-        </label>
-        <label>Smoking
-          <select onChange={handleSmoking}>
-            <option value={null}></option>
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-        </label>
-        <label>Religion
-          <select onChange={handleReligion}>
-            <option></option>
-            <option>Buddhist</option>
-            <option>Catholic</option>
-            <option>Christian</option>
-            <option>Hindu</option>
-            <option>Jewish</option>
-            <option>Muslim</option>
-            <option>Spiritual</option>
-            <option>Agnostic</option>
-            <option>Atheist</option>
-            <option>Other</option>
-            <option>Prefer Not to Say</option>
-          </select>
-        </label>
-        <label>House Trained
-          <select onChange={handleHouseTrained}>
-            <option value={null}></option>
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-        </label>
-        <label>Dietary Requirements
-          <select onChange={handleDietaryRequirements}>
-            <option></option>
-            <option>Vegetarian</option>
-            <option>Vegan</option>
-            <option>Gluten Free</option>
-            <option>Dairy Free</option>
-            <option>Pescatarian</option>
-            <option>Paleo</option>
-            <option>Keto</option>
-            <option>Kosher</option>
-            <option>Halal</option>
-          </select>
-        </label>
-        <label>Children
-          <select onChange={handleChildren}>
-            <option></option>
-            <option>Have Children</option>
-            <option>Want Children</option>
-            <option>Don&apos;t Want Children</option>
-          </select>
-        </label>
-      </section>
+      <Button size="large" onClick={toggleFilterShow}>Filters</Button>
+      {showFilters && 
+            <section>
+              <Button size="small" onClick={resetFilters}>Reset Filters</Button>
+              <label>Minimum Age
+                <input
+                  type="number"
+                  onChange={handleMinAge}
+                />
+              </label>
+              <label>Maximum Age
+                <input
+                  type="number"
+                  onChange={handleMaxAge}
+                />
+              </label>
+              <label>Minimum Weight
+                <input
+                  type="number"
+                  onChange={handleMinWeight}
+                />
+              </label>
+              <label>Maximum Weight
+                <input
+                  type="number"
+                  onChange={handleMaxWeight}
+                />
+              </label>
+              <label>Minimum Height
+                <input
+                  type="number"
+                  onChange={handleMinHeight}
+                />
+              </label>
+              <label>Maximum Height
+                <input
+                  type="number"
+                  onChange={handleMaxHeight}
+                />
+              </label>
+              <label>Body Type
+                <select onChange={handleBodyType}>
+                  <option></option>
+                  <option>Toned</option>
+                  <option>Average</option>
+                  <option>Large</option>
+                  <option>Muscular</option>
+                  <option>Slim</option>
+                  <option>Stocky</option>
+                </select>
+              </label>
+              <label>Political View
+                <select onChange={handlePoliticalView}>
+                  <option></option>
+                  <option>Liberal</option>
+                  <option>Moderate</option>
+                  <option>Conservative</option>
+                  <option>Other</option>
+                  <option>Prefer Not to Say</option>
+                </select>
+              </label>
+              <label>Gender
+                <select onChange={handleGender}>
+                  <option></option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Non-Binary</option>
+                  <option>Other</option>
+                  <option>Prefer Not to Say</option>
+                </select>
+              </label>
+              <label>Sexual Orientation
+                <select onChange={handleSexualOrientation}>
+                  <option></option>
+                  <option>Gay</option>
+                  <option>Straight</option>
+                  <option>Bisexual</option>
+                  <option>Lesbian</option>
+                  <option>Allosexual</option>
+                  <option>Androsexual</option>
+                  <option>Asexual</option>
+                  <option>Autosexual</option>
+                  <option>Bicurious</option>
+                  <option>Demisexual</option>
+                  <option>Fluid</option>
+                  <option>Graysexual</option>
+                  <option>Gynesexual</option>
+                  <option>Monosexual</option>
+                  <option>Omnisexual</option>
+                  <option>Pansexual</option>
+                  <option>Polysexual</option>
+                  <option>Queer</option>
+                  <option>Questioning</option>
+                  <option>Skoliosexual</option>
+                  <option>Spectrasexual</option>
+                  <option>Not Listed</option>
+                </select>
+              </label>
+              <label>Looking For
+                <select onChange={handleLookingFor}>
+                  <option></option>
+                  <option>Chat</option>
+                  <option>Dates</option>
+                  <option>Friends</option>
+                  <option>Networking</option>
+                  <option>Relationship</option>
+                  <option>Right Now</option>
+                </select>
+              </label>
+              <label>Human
+                <select onChange={handleHuman}>
+                  <option></option>
+                  <option>Have Human</option>
+                  <option>Want Human</option>
+                  <option>Don&apos;t Want Human</option>
+                </select>
+              </label>
+              <label>Drinking
+                <select onChange={handleDrinking}>
+                  <option value={null}></option>
+                  <option value={true}>Yes</option>
+                  <option value={false}>No</option>
+                </select>
+              </label>
+              <label>Smoking
+                <select onChange={handleSmoking}>
+                  <option value={null}></option>
+                  <option value={true}>Yes</option>
+                  <option value={false}>No</option>
+                </select>
+              </label>
+              <label>Religion
+                <select onChange={handleReligion}>
+                  <option></option>
+                  <option>Buddhist</option>
+                  <option>Catholic</option>
+                  <option>Christian</option>
+                  <option>Hindu</option>
+                  <option>Jewish</option>
+                  <option>Muslim</option>
+                  <option>Spiritual</option>
+                  <option>Agnostic</option>
+                  <option>Atheist</option>
+                  <option>Other</option>
+                  <option>Prefer Not to Say</option>
+                </select>
+              </label>
+              <label>House Trained
+                <select onChange={handleHouseTrained}>
+                  <option value={null}></option>
+                  <option value={true}>Yes</option>
+                  <option value={false}>No</option>
+                </select>
+              </label>
+              <label>Dietary Requirements
+                <select onChange={handleDietaryRequirements}>
+                  <option></option>
+                  <option>Vegetarian</option>
+                  <option>Vegan</option>
+                  <option>Gluten Free</option>
+                  <option>Dairy Free</option>
+                  <option>Pescatarian</option>
+                  <option>Paleo</option>
+                  <option>Keto</option>
+                  <option>Kosher</option>
+                  <option>Halal</option>
+                </select>
+              </label>
+              <label>Children
+                <select onChange={handleChildren}>
+                  <option></option>
+                  <option>Have Children</option>
+                  <option>Want Children</option>
+                  <option>Don&apos;t Want Children</option>
+                </select>
+              </label>
+            </section>
+      }
+
       <Box sx={{ mx: 'auto', width: '80%' }}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {isError && <Error />}

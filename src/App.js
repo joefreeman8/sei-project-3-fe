@@ -10,6 +10,7 @@ import Login from './components/auth/Login'
 import Account from './components/auth/Account'
 import ChatIndex from './components/chat/ChatIndex'
 import ChatShow from './components/chat/ChatShow'
+import ProfileShow from './components/profiles/ProfileShow'
 import ProfileEdit from './components/profiles/ProfileEdit'
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
           <p>Page Not Found</p>
           <p>Head back to the <Link to="/potentialsniffs">Potential Sniffs</Link></p>
         </Route> */}
+        <Route path="/potentialsniffs/:userId" element={<ProfileShow />} />
+        <Route path="/account/:userId" element={<ProfileShow />} />
       </Routes>
     </BrowserRouter>
   )
