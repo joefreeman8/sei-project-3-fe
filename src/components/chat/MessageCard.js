@@ -1,11 +1,30 @@
-//import { isOwner } from '../../lib/auth'
+import React from 'react'
 
-function MessageCard({ content }) {
+function MessageCard({ singleMessage }) {
+
+  const currentUserId = JSON.parse(localStorage.getItem('userId'))
+  console.log(singleMessage.sender)
+  console.log(currentUserId)
+
+  const [isSender, setIsSender] = React.useState(false)
+
+  React.useEffect(() => {
+    
+    if (singleMessage.sender === currentUserId) {
+      setIsSender(true)
+    }
+  }, [currentUserId, singleMessage.sender])
+
+
+  console.log(isSender)
+
   return (
     <div>
-      <div>
-        <p>
-          {content}
+      <div className={isSender ? 'senderBubble' : 'receiverBubble'}>
+        <p className={isSender ? 'sender' : 'receiver'}>
+          
+          {singleMessage.text}
+
         </p> 
       </div>
     </div>

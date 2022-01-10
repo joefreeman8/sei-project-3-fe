@@ -1,13 +1,9 @@
 import React from 'react'
 import ChatCard from './ChatCard'
 import { getAllChats } from '../../lib/api'
-//import Container from '@mui/material/Container'
 
+import { Row, Item } from '@mui-treasury/components/flex'
 
-//import Avatar from '@material-ui/core/Avatar'
-// import { Row, Item } from '@mui-treasury/components/flex'
-//import { useDynamicAvatarStyles } from '@mui-treasury/styles/avatar/dynamic'
-//import Button from '@material-ui/core/Button'
 
 
 function ChatIndex() {
@@ -15,7 +11,7 @@ function ChatIndex() {
   const [chats, setChats] = React.useState([])
 
   const [searchValue, setSearchValue] = React.useState('')
-  //const [users, setUsers] = React.useState(null)
+
 
   React.useEffect(() => {
     const getChatData = async () => {
@@ -34,7 +30,7 @@ function ChatIndex() {
   console.log(chats)
   
 
-  //* Search Bar
+  //   //* Search Bar
 
   const handleSubmit = (e) => {
     e.preventDefault() 
@@ -46,11 +42,11 @@ function ChatIndex() {
     setSearchValue(e.target.value)
   }
 
-  // const searchedUser = (users) => {
-  //   return users.filter(user => {
+  //   // const searchedUser = (users) => {
+  //   //   return users.filter(user => {
       
-  //   })
-  // }
+  //   //   })
+  //   // }
 
 
   return (

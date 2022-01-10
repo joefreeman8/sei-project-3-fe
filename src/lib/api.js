@@ -65,6 +65,7 @@ export function getAllMessages(chatId, messageId) {
 }
 
 export function createSingleMessage(chatId, formData) {
+  console.log(formData)
   return axios.post(`${baseUrl}/chat/${chatId}/messages/`, formData, headers())
 }
 

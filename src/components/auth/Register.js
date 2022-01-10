@@ -38,6 +38,7 @@ function Register() {
     console.log('pre-register', formData)
     e.preventDefault()
     try {
+      console.log(formData)
       await registerUser(formData)
       const allProfiles = await getAllProfiles()
       const res = await loginUser(loginFormData)
