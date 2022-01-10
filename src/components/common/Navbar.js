@@ -18,9 +18,9 @@ function Navbar() {
       <Link to="/"><img src={logoPurple} className='nav-logo'></img></Link>
       {isAuth && (
         <>
-          <Link to="/potentialsniffs">Profile Index</Link>
+          <Link to="/potentialsniffs">Potential Sniffs</Link>
+          <Link to="/chat">Chats</Link>
           <Link to="/account">Account</Link>
-          <Link to="/chat">Messages</Link>
         </>
       )}
       {isAuth ? (
