@@ -3,20 +3,19 @@ import React from 'react'
 function MessageCard({ singleMessage }) {
 
   const currentUserId = JSON.parse(localStorage.getItem('userId'))
-  console.log(singleMessage.sender)
-  console.log(currentUserId)
+  // console.log(singleMessage.sender)
+  // console.log(currentUserId)
 
   const [isSender, setIsSender] = React.useState(false)
 
   React.useEffect(() => {
-    
     if (singleMessage.sender === currentUserId) {
       setIsSender(true)
     }
   }, [currentUserId, singleMessage.sender])
 
 
-  console.log(isSender)
+  // console.log(isSender)
 
   return (
     <div>

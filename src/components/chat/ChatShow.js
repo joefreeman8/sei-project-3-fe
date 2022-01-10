@@ -20,12 +20,13 @@ function ChatShow() {
     const getData = async () => {
       try {
         const { data } = await getSingleChat(chatId)
+        // console.log('data', data)
         setAllMessages(data.messages)
-        console.log(data.userOne === currentUserId, data.userTwo === currentUserId)
+        // console.log(data.userOne === currentUserId, data.userTwo === currentUserId)
         if (data.userOne === currentUserId) {
-          setReceiverId(data.userOne)
-        } else {
           setReceiverId(data.userTwo)
+        } else {
+          setReceiverId(data.userOne)
         }
       } catch (err) {
         console.log(err)
@@ -33,8 +34,8 @@ function ChatShow() {
     }
     getData()
   }, [chatId, currentUserId])
+  // console.log('receiver', receiverId)
 
-  console.log(allMessages)
 
   const handleChange = (e) => {
     setMessage(e.target.value)
@@ -50,7 +51,7 @@ function ChatShow() {
       console.log(err)
     }
   }
-
+  // console.log('all messages', allMessages)
   return (
     <div>
       <div>

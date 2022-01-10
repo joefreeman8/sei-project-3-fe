@@ -2,7 +2,6 @@ import React from 'react'
 import ChatCard from './ChatCard'
 import { getAllChats } from '../../lib/api'
 
-
 function ChatIndex() {
 
   const [chats, setChats] = React.useState([])
@@ -14,7 +13,7 @@ function ChatIndex() {
     const getChatData = async () => {
       try {
         const { data } = await getAllChats()
-        console.log(data)
+        // console.log(data)
         setChats(data)
       } catch (err) {
         console.log(err)
@@ -24,7 +23,7 @@ function ChatIndex() {
   }, [])
 
 
-  console.log(chats)
+  // console.log(chats)
   
 
   //   //* Search Bar
@@ -35,7 +34,7 @@ function ChatIndex() {
   }
 
   const handleChange = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     setSearchValue(e.target.value)
   }
 
@@ -65,12 +64,10 @@ function ChatIndex() {
         </form>
       </div>
 
-
       <div>
         {chats?.map(chat => (
           <ChatCard 
             key={chat._id}
-            senderId={chat.userTwo}
             chatId={chat._id}
             chatObject={chat}
           />
