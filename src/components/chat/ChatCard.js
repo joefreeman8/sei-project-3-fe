@@ -6,7 +6,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Box  from '@mui/material/Box'
-//import Divider from '@material-ui/core/Divider'
 
 function ChatCard({ senderId, chatId }) {
 
