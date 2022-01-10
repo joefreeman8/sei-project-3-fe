@@ -3,11 +3,10 @@ import { editProfile } from '../../lib/api'
 import { getSingleProfile } from '../../lib/api'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router'
-import Error from '../common/Error'
-// import Alert from '@mui/material/Alert'
-// import Stack from '@mui/material/Stack'
-import axios from 'axios'
 import ProfileEditForm from './ProfileEditForm'
+import Error from '../common/Error'
+
+import Card from '@mui/material/Card'
 
 const initialState = {
   name: '',
@@ -75,29 +74,21 @@ function ProfileEdit() {
     }
   }
 
-  const handleImageUpload = async (e) => {
-    const data = new FormData()
-    data.append('file', e.target.files[0])
-    data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
-    const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
-    setFormData({ ...formData, picture: res.data.url })
-    return
-  }
 
 
   return (
-    <section className="section"><h1>{formData.name}</h1>
+    <section className="section">
       <div className="container">
-        <div>
+        <Card sx={{ width: '80%', mx: 'auto', display: 'flex' }}>
           {isError && <Error />}
           <ProfileEditForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}
-            handleImageUpload={handleImageUpload}
+            setFormData={setFormData}
             formData={formData}
             formErrors={formErrors}
           />
-        </div>
+        </Card>
       </div>
     </section>
   )

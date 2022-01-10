@@ -51,12 +51,12 @@ function ChatShow() {
       console.log(err)
     }
   }
-  // console.log('all messages', allMessages)
+  console.log('all messages', allMessages)
   return (
     <div>
       <div>
         {allMessages && allMessages.map(singleMessage => {
-          return <MessageCard key={singleMessage._id} singleMessage={singleMessage} />
+          return <MessageCard allMessages={allMessages} key={singleMessage._id} singleMessage={singleMessage} />
         }
         )}
       </div>

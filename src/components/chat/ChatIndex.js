@@ -28,15 +28,15 @@ function ChatIndex() {
 
   //   //* Search Bar
 
-  const handleSubmit = (e) => {
-    e.preventDefault() 
-    searchValue.toLowerCase()
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault() 
+  //   searchValue.toLowerCase()
+  // }
 
-  const handleChange = (e) => {
-    // console.log(e.target.value)
-    setSearchValue(e.target.value)
-  }
+  // const handleChange = (e) => {
+  //   // console.log(e.target.value)
+  //   setSearchValue(e.target.value)
+  // }
 
   //   // const searchedUser = (users) => {
   //   //   return users.filter(user => {
@@ -52,7 +52,7 @@ function ChatIndex() {
       </div>
 
       <div>
-        <form onSubmit={handleSubmit}>
+        {/* <form onSubmit={handleSubmit}>
           <input
             type="text"
             onChange={handleChange}
@@ -61,7 +61,7 @@ function ChatIndex() {
           <div>
             <button type="submit" onSubmit={handleSubmit}>Search</button>
           </div>
-        </form>
+        </form> */}
       </div>
 
       <div>

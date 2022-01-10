@@ -157,6 +157,7 @@ function ProfileShow() {
                     !isMessaging ?
                       <Button
                         size="large"
+                        
                         onClick={handleMessageButtonClick}>
                     Message
                       </Button>

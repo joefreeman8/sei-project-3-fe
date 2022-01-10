@@ -30,7 +30,6 @@ function Register() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
     setLoginFormData({ ...loginFormData, [e.target.name]: e.target.value })
-    console.log(loginFormData)
   }
 
   const handleSubmit = async (e) => {
@@ -60,10 +59,16 @@ function Register() {
     const data = new FormData()
     data.append('file', e.target.files[0])
     data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
-    const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
-    setFormData({ ...formData, picture: res.data.url })
-    return
+    try {
+      const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
+      setFormData({ ...formData, picture: res.data.url })
+    } catch (err) {
+      console.log(err)
+    }
+
   }
+
+
 
   return (
     <div>

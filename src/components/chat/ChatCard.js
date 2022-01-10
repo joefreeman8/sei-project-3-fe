@@ -44,7 +44,7 @@ function ChatCard({ chatId, chatObject }) {
       <Box minHeight={100} bgcolor={'#F4F7FA'} borderRadius={1} className="message-box">
         <h3 className="sender-name">{sender?.name}</h3>
         {/* <Divider variant="middle"/> */}
-        <p className="sender-message">{chat?.messages[chat.messages.length - 1].text}</p>
+        {/* <p className="sender-message">{chat?.messages[chat.messages.length - 1].text}</p> */}
       </Box>
     </Link>
   )
