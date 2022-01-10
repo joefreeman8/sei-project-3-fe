@@ -74,7 +74,6 @@ function ChatIndex() {
         )) 
         }
       </div>
-
     </div>
   )
 }

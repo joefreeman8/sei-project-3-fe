@@ -64,10 +64,6 @@ export function deleteChat(chatId) {
 
 //* Message
 
-// export function getAllMessages(chatId, messageId) {
-//   return axios.get(`${baseUrl}/chat/${chatId}/messages`, headers() )
-// }
-
 export function createSingleMessage(chatId, formData) {
   console.log(formData)
   return axios.post(`${baseUrl}/chat/${chatId}/messages/`, formData, headers())
