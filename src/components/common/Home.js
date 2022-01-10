@@ -15,7 +15,7 @@ function Home() {
       <h4>Sniffers is the one and only app for bringing paws together.</h4>
       <h4>We are dedicated to connecting you on what matters.</h4>
       <div>
-        <button className="join-button"><Link to="/register">Join Sniffers</Link></button>
+        <button className="join-button" variant="contained"><Link to="/register">Join Sniffers</Link></button>
       </div>
     </section>
   )

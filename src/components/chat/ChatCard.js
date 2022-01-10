@@ -39,8 +39,6 @@ function ChatCard({ chatId, chatObject }) {
 
   console.log(chat)
 
-  // console.log(chat)
-
   return (
     <Link to={`/chat/${chatId}`}>
       <Box minHeight={100} bgcolor={'#F4F7FA'} borderRadius={1} className="message-box">
