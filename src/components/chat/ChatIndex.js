@@ -5,7 +5,7 @@ import { getAllChats } from '../../lib/api'
 
 
 //import Avatar from '@material-ui/core/Avatar'
-// import { Row, Item } from '@mui-treasury/components/flex'
+import { Row, Item } from '@mui-treasury/components/flex'
 //import { useDynamicAvatarStyles } from '@mui-treasury/styles/avatar/dynamic'
 //import Button from '@material-ui/core/Button'
 
