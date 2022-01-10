@@ -37,6 +37,8 @@ function ChatCard({ chatId, chatObject }) {
     getData()
   }, [userId, chatId, chatObject.userOne, chatObject.userTwo, currentUserId])
 
+  console.log(chat)
+
   // console.log(chat)
 
   return (
