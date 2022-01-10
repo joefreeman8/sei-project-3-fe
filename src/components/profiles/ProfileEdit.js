@@ -39,10 +39,12 @@ function ProfileEdit() {
 
 
 
+
   React.useEffect(() => {
     const getData = async () => {
       try {
         const res = await getSingleProfile(userId)
+        console.log(res.data)
         setFormData(res.data)
       } catch (err) {
         console.log(err)
@@ -56,7 +58,6 @@ function ProfileEdit() {
 
   const handleChange = e => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
-    console.log({ ...formData, [e.target.name]: e.target.value })
     setFormData({ ...formData, [e.target.name]: value })
     setFormErrors({ ...formErrors, [e.target.name]: '' })
   }
@@ -66,7 +67,7 @@ function ProfileEdit() {
 
     try {
       await editProfile(userId, formData)
-      navigate(`/account/${userId}/edit`)
+      navigate(`/account/${userId}`)
     } catch (err) {
       setFormErrors(err.response.data.errors)
     }
@@ -86,8 +87,9 @@ function ProfileEdit() {
     <section className="section">
       <div className="container">
         <div>
-          {isError && <Error />}
-          {formData && (
+          {isError ? 
+            <Error />
+            :
             <form className="" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="name" className="label">
@@ -614,7 +616,7 @@ function ProfileEdit() {
                 </button>
               </div>
             </form>
-          )}
+          }
         </div>
       </div>
     </section>
