@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { isAuthenticated, removeToken } from '../../lib/auth'
+import logoPurple from '../../assets/logoPurple.png'
 
 
 function Navbar() {
@@ -14,7 +15,7 @@ function Navbar() {
 
   return (
     <nav>
-      <Link to="/">Home</Link>
+      <Link to="/"><img src={logoPurple} className='nav-logo'></img></Link>
       {isAuth && (
         <>
           <Link to="/potentialsniffs">Profile Index</Link>
