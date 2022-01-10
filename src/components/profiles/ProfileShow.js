@@ -2,7 +2,10 @@ import React from 'react'
 import Error from '../common/Error'
 import Loading from '../common/Loading'
 import { useParams } from 'react-router'
-import { getSingleProfile } from '../../lib/api'
+import { getSingleProfile, getAllChats } from '../../lib/api'
+import { useNavigate } from 'react-router-dom'
+import { createChat } from '../../lib/api'
+
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
@@ -11,13 +14,27 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 
+const initialState = {
+  messages: [{
+    text: '',
+    sender: '',
+    receiver: '',
+  }],
+  userOne: '',
+  userTwo: '',
+}
 
 function ProfileShow() {
   const { userId } = useParams()
   const [profile, setProfile] = React.useState(null)
+  const [chats, setChats] = React.useState([])
   const [isError, setIsError] = React.useState(false)
   const isLoading = !profile && !isError
   const currentUserId = JSON.parse(localStorage.getItem('userId'))
+  const [formData, setFormData] = React.useState(initialState)
+  const [isMessaging, setIsMessaging] = React.useState(false)
+  const navigate = useNavigate()
+
 
   React.useEffect(() => {
     const getData = async () => {
@@ -30,6 +47,61 @@ function ProfileShow() {
     }
     getData()
   }, [userId])
+
+  React.useEffect(() => {
+    const getChatData = async () => {
+      try {
+        const { data } = await getAllChats()
+        setChats(data)
+      } catch (err) {
+        setIsError(true)
+      }
+    }
+    getChatData()
+  }, [])
+
+
+  const filterChats = (chats) => {
+    return chats.filter(chat => {
+      return chat.userOne === userId || chat.userTwo === userId
+    })
+  }
+
+  const handleMessageButtonClick = () => {
+    console.log(filterChats(chats))
+    if (
+      filterChats(chats).length > 0
+    ) {
+      navigate(`/chat/${chats[0]._id}`)
+    } else {
+      setIsMessaging(true)
+    }
+  }
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      userOne: currentUserId,
+      userTwo: userId,
+      messages: {
+        text: e.target.value,
+        sender: currentUserId,
+        receiver: userId,
+      },
+    })
+  }
+
+
+  const createNewChat = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await createChat(formData)
+      navigate(`/chat/:${res.data._id}`)
+    } catch (err) {
+      setIsError(true)
+    }
+  }
+
 
 
   return (
@@ -74,9 +146,31 @@ function ProfileShow() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="large" href={currentUserId === userId ? `/account/${currentUserId}/edit` : '/chat'}>
-                  {currentUserId === userId ? 'Edit Page' : 'Message'}
-                </Button>
+                {currentUserId === userId ? (
+                  <Button
+                    size="large"
+                    href={`/account/${currentUserId}/edit`}>
+                    Edit Page
+                  </Button>
+                ) :
+                  (
+                    !isMessaging ?
+                      <Button
+                        size="large"
+                        onClick={handleMessageButtonClick}>
+                    Message
+                      </Button>
+                      : <form onSubmit={createNewChat}>
+                        <div className="control">
+                          <textarea  
+                            name="content" 
+                            placeholder={`Write your first message to ${profile.name}`}
+                            rows="3"
+                            onChange={handleChange} />
+                        </div>
+                        <button type='submit'>Send Message</button>
+                      </form>
+                  )}
               </CardActions>
             </Grid>
 
