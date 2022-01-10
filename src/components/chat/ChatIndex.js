@@ -6,7 +6,7 @@ function ChatIndex() {
 
   const [chats, setChats] = React.useState([])
 
-  const [searchValue, setSearchValue] = React.useState('')
+  //const [searchValue, setSearchValue] = React.useState('')
 
 
   React.useEffect(() => {
