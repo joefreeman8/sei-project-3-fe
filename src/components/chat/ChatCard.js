@@ -32,7 +32,7 @@ function ChatCard({ senderId, chatId }) {
     getData()
   }, [senderId, chatId])
 
-  console.log(chat)
+  // console.log(chat)
 
   return (
     <Link to={`/chat/${chatId}`}>

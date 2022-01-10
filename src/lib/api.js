@@ -25,7 +25,7 @@ export function getSingleProfile(userId) {
 //* USER Requests 
 
 export function editProfile(userId, formData) {
-  return axios.put(`${baseUrl}/account/${userId}/edit`, formData, headers())
+  return axios.put(`${baseUrl}/account/${userId}`, formData, headers())
 }
 
 export function deleteProfile(userId) {
@@ -65,6 +65,7 @@ export function getAllMessages(chatId, messageId) {
 }
 
 export function createSingleMessage(chatId, formData) {
+  console.log(formData)
   return axios.post(`${baseUrl}/chat/${chatId}/messages/`, formData, headers())
 }
 

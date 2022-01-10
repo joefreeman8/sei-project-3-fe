@@ -32,3 +32,35 @@
   color: gray;
   font-style: italic;
 }
+
+
+.sender {
+  color: purple;
+  padding: 15px;
+}
+
+.receiver {
+  color: blue;
+  padding: 15px;
+}
+
+.senderBubble {
+  background-color: #E6E6FA;
+  border-radius: 25px;
+  max-width: 250px;
+}
+
+.receiverBubble {
+  background-color: #E7FFF8;
+  border-radius: 25px;
+  max-width: 250px;
+}
+
+.write-message {
+	height: 25px;
+	line-height: 25px;
+	font-size: 16px;
+	padding: 0;
+  border-radius: 25px;
+  max-width: 250px;
+}

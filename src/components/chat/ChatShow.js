@@ -1,11 +1,9 @@
 import React from 'react'
 import { useParams } from 'react-router'
 
-// import { Link } from 'react-router-dom'
 import { getSingleChat } from '../../lib/api'
 import { createSingleMessage } from '../../lib/api'
-//import MessageCard from './MessageCard'
-//import { v4 as uuid } from 'uuid'
+import MessageCard from './MessageCard'
 
 
 function ChatShow() {
@@ -13,29 +11,30 @@ function ChatShow() {
 
   const [allMessages, setAllMessages] = React.useState([])
   const [message, setMessage] = React.useState('')
-  //const [sender, setSender] = React.useState('')
+  const [receiverId, setReceiverId] = React.useState('')
+  const currentUserId = JSON.parse(localStorage.getItem('userId'))
 
-  const fetchChat = React.useCallback(() => {
+
+
+  React.useEffect(() => {
     const getData = async () => {
       try {
         const { data } = await getSingleChat(chatId)
-        console.log(data)
-        console.log(data.messages)
-        console.log(data.messages[0].text)
-        setAllMessages(data)
-        
+        setAllMessages(data.messages)
+        console.log(data.userOne === currentUserId, data.userTwo === currentUserId)
+        if (data.userOne === currentUserId) {
+          setReceiverId(data.userOne)
+        } else {
+          setReceiverId(data.userTwo)
+        }
       } catch (err) {
         console.log(err)
       }
     }
     getData()
-  }, [chatId])
+  }, [chatId, currentUserId])
 
   console.log(allMessages)
-
-  React.useEffect(() => {
-    fetchChat()
-  }, [chatId, fetchChat])
 
   const handleChange = (e) => {
     setMessage(e.target.value)
@@ -44,9 +43,9 @@ function ChatShow() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await createSingleMessage(chatId, { content: message })
+      const res = await createSingleMessage(chatId, { text: message, sender: currentUserId, receiver: receiverId })
+      setAllMessages(res.data.messages)
       setMessage('')
-      fetchChat()
     } catch (err) {
       console.log(err)
     }
@@ -54,21 +53,14 @@ function ChatShow() {
 
   return (
     <div>
-      <p>hello</p>
       <div>
-        <ul>
-          {/* {allMessages.map(singleMessage => (
-            <li>
-              <MessageCard
-                key={uuid()}
-                content={singleMessage.content}
-              />
-            </li>
-          ))} */}
-        </ul>
+        {allMessages && allMessages.map(singleMessage => {
+          return <MessageCard key={singleMessage._id} singleMessage={singleMessage} />
+        }
+        )}
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="control">
+      <form>
+        <div className="write-message" onBlur={handleSubmit}>
           <textarea  
             name="content" 
             placeholder="Write your message here" 
