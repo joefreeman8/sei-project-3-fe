@@ -15,33 +15,27 @@ function ChatCard({ chatId, chatObject }) {
   const [userId, setUserId] = React.useState('')
   const currentUserId = JSON.parse(localStorage.getItem('userId'))
 
-  const retrieveUserId = () => {
-    if (chatObject.userOne !== currentUserId) {
-      return setUserId(chatObject.userOne)
-    } else {
-      return setUserId(chatObject.userTwo)
-    }
-  }
-  retrieveUserId()
-  console.log(userId)
-
   React.useEffect(() => {
     const getData = async () => {
       try {
         const senderData = await getSingleProfile(userId)
-        console.log(userId, senderData)
+        // console.log(userId, senderData)
         setSender(senderData.data)
 
         const chatData = await getSingleChat(chatId)
-        console.log(chatId, chatData)
+        // console.log(chatId, chatData)
         setChat(chatData.data)
-
+        if (chatObject.userOne !== currentUserId) {
+          return setUserId(chatObject.userOne)
+        } else {
+          return setUserId(chatObject.userTwo)
+        }
       } catch (err) {
         console.log(err)
       }
     }
     getData()
-  }, [userId, chatId])
+  }, [userId, chatId, chatObject.userOne, chatObject.userTwo, currentUserId])
 
   // console.log(chat)
 

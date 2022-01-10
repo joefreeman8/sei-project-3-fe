@@ -2,9 +2,6 @@ import React from 'react'
 import ChatCard from './ChatCard'
 import { getAllChats } from '../../lib/api'
 
-// import { Row, Item } from '@mui-treasury/components/flex'
-
-
 function ChatIndex() {
 
   const [chats, setChats] = React.useState([])
@@ -16,7 +13,7 @@ function ChatIndex() {
     const getChatData = async () => {
       try {
         const { data } = await getAllChats()
-        console.log(data)
+        // console.log(data)
         setChats(data)
       } catch (err) {
         console.log(err)
@@ -26,7 +23,7 @@ function ChatIndex() {
   }, [])
 
 
-  console.log(chats)
+  // console.log(chats)
   
 
   //   //* Search Bar
@@ -37,7 +34,7 @@ function ChatIndex() {
   }
 
   const handleChange = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     setSearchValue(e.target.value)
   }
 
@@ -67,23 +64,17 @@ function ChatIndex() {
         </form>
       </div>
 
-      {/* <Row gap={2} p={2.5}>
-        <Row wrap grow gap={0.5} minWidth={0}>
-          <Item grow minWidth={0}> */}
       <div>
         {chats?.map(chat => (
           <ChatCard 
             key={chat._id}
-            senderId={chat.userTwo}
             chatId={chat._id}
             chatObject={chat}
           />
         )) 
         }
       </div>
-      {/* </Item>
-        </Row>
-      </Row> */}
+
     </div>
   )
 }
