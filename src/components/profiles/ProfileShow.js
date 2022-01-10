@@ -52,29 +52,28 @@ function ProfileShow() {
     const getChatData = async () => {
       try {
         const { data } = await getAllChats()
-        setChats(data)
+        setChats(data.filter(chat => {
+          return chat.userOne === userId || chat.userTwo === userId
+        }))
       } catch (err) {
         setIsError(true)
       }
     }
     getChatData()
-  }, [])
+  }, [userId])
 
 
-  const filterChats = (chats) => {
-    return chats.filter(chat => {
-      return chat.userOne === userId || chat.userTwo === userId
-    })
-  }
+  console.log(chats)
 
   const handleMessageButtonClick = () => {
-    console.log(filterChats(chats))
     if (
-      filterChats(chats).length > 0
+      chats.length > 0
     ) {
+      console.log('here')
       navigate(`/chat/${chats[0]._id}`)
     } else {
       setIsMessaging(true)
+      console.log('there')
     }
   }
 

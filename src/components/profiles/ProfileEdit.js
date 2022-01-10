@@ -3,9 +3,8 @@ import { editProfile } from '../../lib/api'
 import { getSingleProfile } from '../../lib/api'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router'
-import Error from '../common/Error'
-import axios from 'axios'
 import ProfileEditForm from './ProfileEditForm'
+import Error from '../common/Error'
 
 import Card from '@mui/material/Card'
 

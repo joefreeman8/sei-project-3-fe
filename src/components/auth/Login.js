@@ -93,7 +93,7 @@ function Login() {
           Log Me In!
         </button>
       </form>
-      <p>No account? <Link to="/register">Register here</Link></p>
+      <p>No account? <Link to="/register" className="register">Register here</Link></p>
     </div>
   )
 }
