@@ -5,7 +5,6 @@ import axios from 'axios'
 import { setToken } from '../../lib/auth'
 import { loginUser, getAllProfiles } from '../../lib/api'
 
-
 const initialState = {
   name: '',
   email: '',

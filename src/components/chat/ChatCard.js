@@ -7,17 +7,29 @@ import { Link } from 'react-router-dom'
 
 import Box  from '@mui/material/Box'
 
-function ChatCard({ senderId, chatId }) {
+function ChatCard({ chatId, chatObject }) {
 
 
   const [sender, setSender] = React.useState(null)
   const [chat, setChat] = React.useState(null)
+  const [userId, setUserId] = React.useState('')
+  const currentUserId = JSON.parse(localStorage.getItem('userId'))
+
+  const retrieveUserId = () => {
+    if (chatObject.userOne !== currentUserId) {
+      return setUserId(chatObject.userOne)
+    } else {
+      return setUserId(chatObject.userTwo)
+    }
+  }
+  retrieveUserId()
+  console.log(userId)
 
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const senderData = await getSingleProfile(senderId)
-        console.log(senderId, senderData)
+        const senderData = await getSingleProfile(userId)
+        console.log(userId, senderData)
         setSender(senderData.data)
 
         const chatData = await getSingleChat(chatId)
@@ -29,7 +41,7 @@ function ChatCard({ senderId, chatId }) {
       }
     }
     getData()
-  }, [senderId, chatId])
+  }, [userId, chatId])
 
   // console.log(chat)
 
