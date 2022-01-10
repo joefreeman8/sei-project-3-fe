@@ -146,7 +146,7 @@ function Register() {
           Find me a mate!
         </button>
       </form>
-      <p>Already signed up? <Link to="/login">Log In</Link></p>
+      <p>Already signed up? <Link to="/login" className="login">Log In</Link></p>
     </div>
 
   )

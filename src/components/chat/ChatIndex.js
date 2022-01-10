@@ -2,8 +2,6 @@ import React from 'react'
 import ChatCard from './ChatCard'
 import { getAllChats } from '../../lib/api'
 
-//import { Row, Item } from '@mui-treasury/components/flex'
-
 
 function ChatIndex() {
 
@@ -67,9 +65,7 @@ function ChatIndex() {
         </form>
       </div>
 
-      {/* <Row gap={2} p={2.5}>
-        <Row wrap grow gap={0.5} minWidth={0}>
-          <Item grow minWidth={0}> */}
+
       <div>
         {chats?.map(chat => (
           <ChatCard 
@@ -81,9 +77,6 @@ function ChatIndex() {
         )) 
         }
       </div>
-      {/* </Item>
-        </Row>
-      </Row> */}
     </div>
   )
 }
