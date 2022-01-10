@@ -2,7 +2,7 @@ import React from 'react'
 import ChatCard from './ChatCard'
 import { getAllChats } from '../../lib/api'
 
-// import { Row, Item } from '@mui-treasury/components/flex'
+import { Row, Item } from '@mui-treasury/components/flex'
 
 
 function ChatIndex() {

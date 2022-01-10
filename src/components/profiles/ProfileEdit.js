@@ -76,7 +76,7 @@ function ProfileEdit() {
   }
 
   const handleImageUpload = async (e) => {
-    console.log(e.target.files)
+    console.log('clicked')
     const data = new FormData()
     data.append('file', e.target.files[0])
     data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
@@ -93,7 +93,7 @@ function ProfileEdit() {
           <ProfileEditForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}
-            onClick={handleImageUpload}
+            handleImageUpload={handleImageUpload}
             formData={formData}
             formErrors={formErrors}
           />
