@@ -11,7 +11,7 @@ function ChatIndex() {
   const [chats, setChats] = React.useState([])
 
   const [searchValue, setSearchValue] = React.useState('')
-  //   //const [users, setUsers] = React.useState(null)
+
 
   React.useEffect(() => {
     const getChatData = async () => {

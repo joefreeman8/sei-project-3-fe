@@ -96,7 +96,7 @@ function ProfileShow() {
     e.preventDefault()
     try {
       const res = await createChat(formData)
-      navigate(`/chat/:${res.data._id}`)
+      navigate(`/chat/${res.data._id}`)
     } catch (err) {
       setIsError(true)
     }
@@ -126,6 +126,7 @@ function ProfileShow() {
 
             <Grid item xs={6}>
               <CardContent>
+                <Typography variant ="h5">{profile.name}</Typography>
                 <Typography gutterBottom variant="body2" component="div">
                   {profile.age && <div><strong>Age: </strong>{profile.age}</div>}
                   {profile.height && <div><strong>Height: </strong>{profile.height}cm</div>}
