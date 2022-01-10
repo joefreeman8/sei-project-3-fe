@@ -30,10 +30,20 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, handleImageUplo
             // className={`input ${formErrors.picture ? 'error' : ''}`}
             // type="file"
             src={formData.picture}
+            className="nav-logo"
             alt="profile picture"
             id="picture"
-            onClick={handleImageUpload}
           />
+          <div>
+            <label htmlFor="picture">Change your photo</label>
+            <input
+              type="file"
+              accept="image/png, image/jpeg"
+              name="picture"
+              id="picture"
+              onChange={handleImageUpload}
+            />
+          </div>
         </div>
       </div>
       <div>

@@ -163,10 +163,10 @@ function ProfileShow() {
                       </Button>
                       : <form onSubmit={createNewChat}>
                         <div className="control">
-                          <textarea  
+                          <input  
+                            type="text"
                             name="content" 
                             placeholder={`Write your first message to ${profile.name}`}
-                            rows="3"
                             onChange={handleChange} />
                         </div>
                         <button type='submit'>Send Message</button>

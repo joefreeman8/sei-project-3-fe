@@ -4,7 +4,6 @@ import { registerUser } from '../../lib/api'
 import axios from 'axios'
 import { setToken } from '../../lib/auth'
 import { loginUser, getAllProfiles } from '../../lib/api'
-import Error from '../common/Error'
 
 const initialState = {
   name: '',
