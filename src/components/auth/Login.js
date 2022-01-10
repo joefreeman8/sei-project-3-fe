@@ -4,12 +4,14 @@ import { loginUser } from '../../lib/api'
 import { setToken } from '../../lib/auth'
 import { getAllProfiles } from '../../lib/api'
 
+const initialState = {
+  email: '',
+  password: '',
+}
+
 function Login() {
   const navigate = useNavigate()
-  const [formData, setFormData] = React.useState({
-    email: '',
-    password: '',
-  })
+  const [formData, setFormData] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
   const [profiles, setProfiles] = React.useState([])
   const [email, setEmail] = React.useState('')

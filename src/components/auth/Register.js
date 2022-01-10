@@ -2,6 +2,9 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { registerUser } from '../../lib/api'
 import axios from 'axios'
+import { setToken } from '../../lib/auth'
+import { loginUser, getAllProfiles } from '../../lib/api'
+import Error from '../common/Error'
 
 const initialState = {
   name: '',
@@ -15,35 +18,52 @@ const initialState = {
   picture: '',
 }
 
+const loginInitialState = {
+  email: '',
+  password: '',
+}
+
 function Register() {
   const [formData, setFormData] = React.useState(initialState)
+  const [loginFormData, setLoginFormData] = React.useState(loginInitialState)
   const navigate = useNavigate()
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+    setLoginFormData({ ...loginFormData, [e.target.name]: e.target.value })
+    console.log(loginFormData)
   }
 
   const handleSubmit = async (e) => {
+    console.log('pre-register', formData)
     e.preventDefault()
     try {
       await registerUser(formData)
-      navigate('/login')
+      const allProfiles = await getAllProfiles()
+      const res = await loginUser(loginFormData)
+      setToken(res.data.token)
+      const userId = allProfiles.data.find(profile => {
+        if (profile.email === formData.email) {
+          console.log(profile._id)
+          return profile
+        } else return
+      })._id
+      console.log(userId)
+      localStorage.setItem('userId', JSON.stringify(userId))
+      navigate(`/account/${userId}/edit`)
     } catch (err) {
       console.log(err)
     }
   }
 
   const handleImageUpload = async (e) => {
-    e.preventDefault()
-    console.log(e.target.files)
-    const data = new FormData() 
+    const data = new FormData()
     data.append('file', e.target.files[0])
     data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
     const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
-    console.log(res)
+    setFormData({ ...formData, picture: res.data.url })
+    return
   }
-
-
 
   return (
     <div>
