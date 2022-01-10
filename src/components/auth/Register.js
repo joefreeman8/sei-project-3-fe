@@ -34,6 +34,7 @@ function Register() {
   }
 
   const handleImageUpload = async (e) => {
+    e.preventDefault()
     console.log(e.target.files)
     const data = new FormData() 
     data.append('file', e.target.files[0])
