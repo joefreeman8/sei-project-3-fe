@@ -1,4 +1,20 @@
-function ProfileEditPage({ handleSubmit, handleChange, formData, handleImageUpload }) {
+import axios from 'axios'
+
+function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData }) {
+  
+
+  const handleImageUpload = async (e) => {
+    const data = new FormData()
+    data.append('file', e.target.files[0])
+    data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
+    try {
+      const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
+      setFormData({ ...formData, picture: res.data.url })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  
   return (
     <form className="" onSubmit={handleSubmit}>
       <div>
@@ -35,7 +51,6 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, handleImageUplo
             id="picture"
           />
           <div>
-            <label htmlFor="picture">Change your photo</label>
             <input
               type="file"
               accept="image/png, image/jpeg"
