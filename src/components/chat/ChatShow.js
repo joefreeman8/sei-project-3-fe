@@ -65,7 +65,6 @@ function ChatShow() {
             type="text"
             name="content" 
             placeholder="Write your message here" 
-            rows="3"
             onChange={handleChange} 
             value={message} />
         </div>
@@ -73,8 +72,6 @@ function ChatShow() {
       </form>
     </div>
   )
-
-
 }
 
 export default ChatShow

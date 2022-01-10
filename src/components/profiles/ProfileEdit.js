@@ -76,12 +76,12 @@ function ProfileEdit() {
   }
 
   const handleImageUpload = async (e) => {
-    console.log(e.target.files)
     const data = new FormData()
     data.append('file', e.target.files[0])
     data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
     const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
-    console.log(res)
+    setFormData({ ...formData, picture: res.data.url })
+    return
   }
 
 
@@ -93,7 +93,7 @@ function ProfileEdit() {
           <ProfileEditForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}
-            onClick={handleImageUpload}
+            handleImageUpload={handleImageUpload}
             formData={formData}
             formErrors={formErrors}
           />
