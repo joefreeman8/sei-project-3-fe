@@ -59,15 +59,17 @@ function ChatShow() {
         }
         )}
       </div>
-      <form>
-        <div className="write-message" onBlur={handleSubmit}>
-          <textarea  
+      <form onSubmit={handleSubmit}>
+        <div className="write-message">
+          <input  
+            type="text"
             name="content" 
             placeholder="Write your message here" 
             rows="3"
             onChange={handleChange} 
             value={message} />
         </div>
+        <button type="submit">Send</button>
       </form>
     </div>
   )
