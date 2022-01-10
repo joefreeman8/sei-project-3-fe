@@ -58,6 +58,10 @@ export function createChat(formData) {
   return axios.post(`${baseUrl}/chat`, formData, headers())
 }
 
+export function deleteChat(chatId) {
+  return axios.post(`${baseUrl}/chat/${chatId}`, headers())
+}
+
 //* Message
 
 // export function getAllMessages(chatId, messageId) {
@@ -69,3 +73,6 @@ export function createSingleMessage(chatId, formData) {
   return axios.post(`${baseUrl}/chat/${chatId}/messages/`, formData, headers())
 }
 
+export function deleteMessage(chatId, messageId) {
+  return axios.delete(`${baseUrl}/chat/${chatId}/messages/${messageId}`, headers())
+}
