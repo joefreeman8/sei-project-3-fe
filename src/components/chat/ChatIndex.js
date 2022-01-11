@@ -1,12 +1,14 @@
 import React from 'react'
 import ChatCard from './ChatCard'
 import { getAllChats } from '../../lib/api'
+import Card from '@mui/material/Card'
+import Box from '@mui/material/Box'
 
 function ChatIndex() {
 
   const [chats, setChats] = React.useState([])
 
-  const [searchValue, setSearchValue] = React.useState('')
+  // const [searchValue, setSearchValue] = React.useState('')
 
 
   React.useEffect(() => {
@@ -22,21 +24,19 @@ function ChatIndex() {
     getChatData()
   }, [])
 
-
-  // console.log(chats)
   
 
   //   //* Search Bar
 
-  const handleSubmit = (e) => {
-    e.preventDefault() 
-    searchValue.toLowerCase()
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault() 
+  //   searchValue.toLowerCase()
+  // }
 
-  const handleChange = (e) => {
-    // console.log(e.target.value)
-    setSearchValue(e.target.value)
-  }
+  // const handleChange = (e) => {
+  //   // console.log(e.target.value)
+  //   setSearchValue(e.target.value)
+  // }
 
   //   // const searchedUser = (users) => {
   //   //   return users.filter(user => {
@@ -47,12 +47,14 @@ function ChatIndex() {
 
   return (
     <div>
-      <div>
-        <h3>Message Your Potential Sniffs</h3>
-      </div>
+      <Card sx={{ width: '70%', mx: 'auto', display: 'flex', flexDirection: 'column', mt: 4, alignItems: 'center' }} >
 
-      <div>
-        <form onSubmit={handleSubmit}>
+        <Box  sx={{ p: 2 }}>
+          <h3 className='purple'>Message Your Potential Sniffs</h3>
+        </Box>
+
+        <div>
+          {/* <form onSubmit={handleSubmit}>
           <input
             type="text"
             onChange={handleChange}
@@ -61,19 +63,20 @@ function ChatIndex() {
           <div>
             <button type="submit" onSubmit={handleSubmit}>Search</button>
           </div>
-        </form>
-      </div>
+        </form> */}
+        </div>
 
-      <div>
-        {chats?.map(chat => (
-          <ChatCard 
-            key={chat._id}
-            chatId={chat._id}
-            chatObject={chat}
-          />
-        )) 
-        }
-      </div>
+        <div>
+          {chats?.map(chat => (
+            <ChatCard 
+              key={chat._id}
+              chatId={chat._id}
+              chatObject={chat}
+            />
+          )) 
+          }
+        </div>
+      </Card>
     </div>
   )
 }

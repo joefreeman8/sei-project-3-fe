@@ -1,6 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { deleteProfile } from '../../lib/api'
 import { removeStoredId, removeToken } from '../../lib/auth'
+
+import Card from '@mui/material/Card'
+import Button from '@mui/material/Button'
+
 
 function Account() {
   const navigate = useNavigate()
@@ -23,27 +27,17 @@ function Account() {
 
   return (
     <div>
-      <div>
-        <div>
-          <Link to={`/account/${currentUserId}`}>
-            <button className="contained">
+      <Card sx={{ width: '50%', mx: 'auto', display: 'flex', flexDirection: 'column', mt: 4, alignItems: 'center' }} >
+        <Button id='purple-button' href={`/account/${currentUserId}`} sx={{ width: '50%', m: 2 }}>
               View Profile
-            </button>
-          </Link>
-        </div>
-        <div>
-          <Link to={`/account/${currentUserId}/edit`}>
-            <button className="contained">
+        </Button>
+        <Button id='purple-button' href={`/account/${currentUserId}/edit`} sx={{ width: '50%', m: 2 }}>
               Edit Profile
-            </button>
-          </Link>
-        </div>
-        <div>
-          <button className="contained" onClick={handleDelete}>
+        </Button>
+        <Button id='purple-button' onClick={handleDelete} sx={{ width: '50%', m: 2 }}>
             Delete Account
-          </button>
-        </div>
-      </div>
+        </Button>
+      </Card>
     </div>
   )
 }

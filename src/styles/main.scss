@@ -1,20 +1,199 @@
+//@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=Meow+Script&family=Raleway:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+
+
+*{
+  margin:0;
+  box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  // width: 100%;
-  // height: 100%;
-  width: 100vw;
+  background-color: #1D056D;
+}
+
+.nav {
+  //position: fixed;
+	display: inline-flex;
+  flex-direction: row;
+	//justify-content: space-around;
+	align-items: center;
+	height: 60px;
+	top: 0;
+  background-color: white;
+  width: 100%;
+  //z-index: 7;
+}
+
+.nav-logo {
+  margin: auto;
+  height: 50px;
+  margin-left: 50px;
+}
+
+.nav-item-left {
+  list-style-type: none;
+  display: inline-block;
+	margin: 0px 10px;
+  text-decoration: none;
+  color: #1D056D;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 14px;
+}
+
+
+.nav-buttons {
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 2;
+  margin-right: 50px;
+}
+
+#purple-button {
+  color: white;
+  background-color: #1D056D;
+}
+
+#purple-button:hover {
+  color: #1D056D;
+  background-color: white;
+}
+
+#purple-button-side {
+  color: white;
+  background-color: #1D056D;
+  margin-left: 10px;
+}
+
+#purple-button-side:hover {
+  color: #1D056D;
+  background-color: white;
+}
+
+#purple-button-auth {
+  color: white;
+  background-color: #1D056D;
+  margin-top: 10px;
+}
+
+#purple-button-auth:hover {
+  color: #1D056D;
+  background-color: white;
+}
+
+.nav-item {
+  display: inline-block;
+	margin: 0px 10px;
+  text-decoration: none;
+  color: #1D056D;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 14px;
+}
+
+.burger-toggle {
+  display: none;
+  @media only screen and (max-width: 600px){
+    display: inline-flex;
+  }
+}
+
+.nav-toggle {
+  @media only screen and (max-width: 600px){
+    display: none;
+  }
+}
+
+.burger-icon {
+  color: #1D056D;
+}
+
+.side-nav-menu-container {
+  width: 250px;
+  color: #1D056D;
+  background-color: white;
+  height: auto;
+  position: fixed;
+  z-index: 2;
+  right: -100%;
+  padding: 20px 30px;
+  border-radius: 0 0 0 20px;
+  margin-top: 200px;
+}
+
+.side-nav-menu-container.active {
+  right: 0;
+  transition: all 0.4s;
+}
+
+.burger-icon {
+  margin-left: 70%;
+}
+
+.auth-burger {
+  margin-top: 60px;
+}
+
+.hero {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, [col] 200px ) ;
+  grid-template-rows: repeat(3, [row] auto  );
   height: 100vh;
   background-image: url(https://i.imgur.com/8Bp5b5v.jpg);
   background-repeat: no-repeat;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
+  background-size: cover;
+  margin: 0px;
+	justify-content: left;
+	align-items: center;
+}
+
+.hero-row-one {
+  grid-column: col 2 / span 3 ;
+  grid-row: row 1;
+  margin: 0;
+  color: white;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 24px;
+}
+
+.logo {
+  max-height: 100px;
+}
+
+.hero-row-two {
+  grid-column: col 2 / span 3 ;
+  grid-row: row 2;
+  margin: 0;
+  color: white;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 24px;
+}
+
+.hero-row-three {
+  grid-column: col 2 / span 3 ;
+  grid-row: row 3;
+  margin: 0;
+  color: white;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 20px;
+  max-width: 900px
+}
+
+h4 {
+  margin: 15px 0;
 }
 
 .join-button {
-  padding: 10px 20px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  list-style-type: none;
+  text-decoration: none;
+  border: none;
   border-radius: 5px;
+  background-color: #1D056D;
+  color: white;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 14px;
+  list-style-type: none;
+  padding: 7px 10px;
 }
 
 
@@ -35,27 +214,31 @@ body {
   font-style: italic;
 }
 
-
 .sender {
-  color: purple;
-  padding: 15px;
+  color: white;
+  padding: 5px;
 }
 
 .receiver {
-  color: blue;
-  padding: 15px;
+  color: white;
+  padding: 5px 15px;
 }
 
 .senderBubble {
-  background-color: #E6E6FA;
+  background-color: #1D056D;
   border-radius: 25px;
   max-width: 250px;
+  margin: 5px;
+  text-align: right;
+  width: 80%;
 }
 
 .receiverBubble {
-  background-color: #E7FFF8;
+  background-color: darkgrey;
   border-radius: 25px;
   max-width: 250px;
+  margin: 5px;
+  width: 80%;
 }
 
 .write-message {
@@ -77,4 +260,77 @@ body {
 
 nav {
   background-color: white;
+}
+
+.btn.contained {
+  color: #1D056D;
+}
+
+.purple {
+  color: #1D056D;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.chat-card {
+  padding: 10px;
+  width: 300px;
+}
+
+input {
+  border-radius: 4px;
+  padding: 5px;
+  margin: 1px 0px 1px 5px;
+}
+
+select {
+  border-radius: 4px;
+  padding: 5px;
+  margin: 1px 0px 1px 5px;
+  background-color: white;
+}
+
+p {
+  word-break: break-all;
+}
+
+#purple-button {
+  color: white;
+  background-color: #1D056D;
+}
+
+#purple-button:hover {
+  color: #1D056D;
+  background-color: white;
+}
+
+#white-button {
+  color: #1D056D;
+  background-color: white;
+}
+
+#white-buttom:hover {
+  color: white;
+  background-color: #1D056D;
+}
+
+.margin-push {
+  margin: 5px 5px 5px 15px
+}
+
+.gray {
+  color: gray;
+}
+
+::placeholder {
+  color: black;
+  font-weight: 550;
 }

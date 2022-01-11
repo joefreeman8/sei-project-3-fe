@@ -4,6 +4,11 @@ import { useParams } from 'react-router'
 import { getSingleChat } from '../../lib/api'
 import { createSingleMessage } from '../../lib/api'
 import MessageCard from './MessageCard'
+import Card from '@mui/material/Card'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+
+
 
 
 function ChatShow() {
@@ -16,13 +21,12 @@ function ChatShow() {
 
 
 
+
   React.useEffect(() => {
     const getData = async () => {
       try {
         const { data } = await getSingleChat(chatId)
-        // console.log('data', data)
         setAllMessages(data.messages)
-        // console.log(data.userOne === currentUserId, data.userTwo === currentUserId)
         if (data.userOne === currentUserId) {
           setReceiverId(data.userTwo)
         } else {
@@ -34,7 +38,6 @@ function ChatShow() {
     }
     getData()
   }, [chatId, currentUserId])
-  // console.log('receiver', receiverId)
 
 
   const handleChange = (e) => {
@@ -51,26 +54,24 @@ function ChatShow() {
       console.log(err)
     }
   }
-  // console.log('all messages', allMessages)
+  console.log('all messages', allMessages)
   return (
     <div>
-      <div>
-        {allMessages && allMessages.map(singleMessage => {
-          return <MessageCard key={singleMessage._id} singleMessage={singleMessage} />
-        }
-        )}
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div className="write-message">
-          <input  
-            type="text"
-            name="content" 
-            placeholder="Write your message here" 
-            onChange={handleChange} 
-            value={message} />
+      <Card sx={{ width: '50%', mx: 'auto', display: 'flex', flexDirection: 'column', mt: 4, alignItems: 'center' }} >
+        <h4 className='purple'>Name of Sender</h4>
+        <div className='chat-card'>
+          {allMessages && allMessages.map(singleMessage => {
+            return <MessageCard allMessages={allMessages} key={singleMessage._id} singleMessage={singleMessage} setAllMessages={setAllMessages}/>
+          }
+          )}
         </div>
-        <button type="submit">Send</button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <div className="write-message">
+            <TextField id="outlined-basic" label="Write your message" variant="outlined" onChange={handleChange} value={message} name='content' sx={{ p: 0 }}/>
+          </div>
+          <Button type="submit" id='purple-button' sx={{ mt: 5, mb: 1 }}>Send</Button>
+        </form>
+      </Card>
     </div>
   )
 }

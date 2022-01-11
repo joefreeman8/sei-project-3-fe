@@ -168,183 +168,159 @@ function ProfileIndex() {
 
   return (
     <div>
-      <Button size="large" onClick={toggleFilterShow}>Filters</Button>
+      <Button size="large" onClick={toggleFilterShow} sx={{ ml: 12, p: 1, mt: 1, mb: 1 }} id='purple-button'>Filter Sniffers</Button>
       {showFilters && 
-            <section>
-              <Button size="small" onClick={resetFilters}>Reset Filters</Button>
-              <label>Minimum Age
-                <input
-                  type="number"
-                  onChange={handleMinAge}
-                />
-              </label>
-              <label>Maximum Age
-                <input
-                  type="number"
-                  onChange={handleMaxAge}
-                />
-              </label>
-              <label>Minimum Weight
-                <input
-                  type="number"
-                  onChange={handleMinWeight}
-                />
-              </label>
-              <label>Maximum Weight
-                <input
-                  type="number"
-                  onChange={handleMaxWeight}
-                />
-              </label>
-              <label>Minimum Height
-                <input
-                  type="number"
-                  onChange={handleMinHeight}
-                />
-              </label>
-              <label>Maximum Height
-                <input
-                  type="number"
-                  onChange={handleMaxHeight}
-                />
-              </label>
-              <label>Body Type
-                <select onChange={handleBodyType}>
-                  <option></option>
-                  <option>Toned</option>
-                  <option>Average</option>
-                  <option>Large</option>
-                  <option>Muscular</option>
-                  <option>Slim</option>
-                  <option>Stocky</option>
-                </select>
-              </label>
-              <label>Political View
-                <select onChange={handlePoliticalView}>
-                  <option></option>
-                  <option>Liberal</option>
-                  <option>Moderate</option>
-                  <option>Conservative</option>
-                  <option>Other</option>
-                  <option>Prefer Not to Say</option>
-                </select>
-              </label>
-              <label>Gender
-                <select onChange={handleGender}>
-                  <option></option>
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>Non-Binary</option>
-                  <option>Other</option>
-                  <option>Prefer Not to Say</option>
-                </select>
-              </label>
-              <label>Sexual Orientation
-                <select onChange={handleSexualOrientation}>
-                  <option></option>
-                  <option>Gay</option>
-                  <option>Straight</option>
-                  <option>Bisexual</option>
-                  <option>Lesbian</option>
-                  <option>Allosexual</option>
-                  <option>Androsexual</option>
-                  <option>Asexual</option>
-                  <option>Autosexual</option>
-                  <option>Bicurious</option>
-                  <option>Demisexual</option>
-                  <option>Fluid</option>
-                  <option>Graysexual</option>
-                  <option>Gynesexual</option>
-                  <option>Monosexual</option>
-                  <option>Omnisexual</option>
-                  <option>Pansexual</option>
-                  <option>Polysexual</option>
-                  <option>Queer</option>
-                  <option>Questioning</option>
-                  <option>Skoliosexual</option>
-                  <option>Spectrasexual</option>
-                  <option>Not Listed</option>
-                </select>
-              </label>
-              <label>Looking For
-                <select onChange={handleLookingFor}>
-                  <option></option>
-                  <option>Chat</option>
-                  <option>Dates</option>
-                  <option>Friends</option>
-                  <option>Networking</option>
-                  <option>Relationship</option>
-                  <option>Right Now</option>
-                </select>
-              </label>
-              <label>Human
-                <select onChange={handleHuman}>
-                  <option></option>
-                  <option>Have Human</option>
-                  <option>Want Human</option>
-                  <option>Don&apos;t Want Human</option>
-                </select>
-              </label>
-              <label>Drinking
-                <select onChange={handleDrinking}>
-                  <option value={null}></option>
-                  <option value={true}>Yes</option>
-                  <option value={false}>No</option>
-                </select>
-              </label>
-              <label>Smoking
-                <select onChange={handleSmoking}>
-                  <option value={null}></option>
-                  <option value={true}>Yes</option>
-                  <option value={false}>No</option>
-                </select>
-              </label>
-              <label>Religion
-                <select onChange={handleReligion}>
-                  <option></option>
-                  <option>Buddhist</option>
-                  <option>Catholic</option>
-                  <option>Christian</option>
-                  <option>Hindu</option>
-                  <option>Jewish</option>
-                  <option>Muslim</option>
-                  <option>Spiritual</option>
-                  <option>Agnostic</option>
-                  <option>Atheist</option>
-                  <option>Other</option>
-                  <option>Prefer Not to Say</option>
-                </select>
-              </label>
-              <label>House Trained
-                <select onChange={handleHouseTrained}>
-                  <option value={null}></option>
-                  <option value={true}>Yes</option>
-                  <option value={false}>No</option>
-                </select>
-              </label>
-              <label>Dietary Requirements
-                <select onChange={handleDietaryRequirements}>
-                  <option></option>
-                  <option>Vegetarian</option>
-                  <option>Vegan</option>
-                  <option>Gluten Free</option>
-                  <option>Dairy Free</option>
-                  <option>Pescatarian</option>
-                  <option>Paleo</option>
-                  <option>Keto</option>
-                  <option>Kosher</option>
-                  <option>Halal</option>
-                </select>
-              </label>
-              <label>Children
-                <select onChange={handleChildren}>
-                  <option></option>
-                  <option>Have Children</option>
-                  <option>Want Children</option>
-                  <option>Don&apos;t Want Children</option>
-                </select>
-              </label>
-            </section>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', flexWrap: 'wrap', color: '#1D056D', ml: 12, mr: 12, height: 340, mb: 2, backgroundColor: 'white', borderRadius: 1, p: 1, alignContent: 'center' }}>
+              <Button id='purple-button' size="medium" onClick={resetFilters} sx={{ m: 2 }}>Reset Filters</Button>
+              <input
+                placeholder='Minimum Age'
+                type="number"
+                onChange={handleMinAge}
+                className='gray margin-push'
+              />
+              <input
+                placeholder='Maximum Age'
+                type="number"
+                onChange={handleMaxAge}
+                className='gray margin-push'
+              />
+              <input
+                placeholder='Minimum Weight'
+                type="number"
+                onChange={handleMinWeight}
+                className='gray margin-push'
+              />
+              <input
+                placeholder='Maximum Weight'
+                type="number"
+                onChange={handleMaxWeight}
+                className='gray margin-push'
+              />
+              <input
+                placeholder='Minimum Height'
+                type="number"
+                onChange={handleMinHeight}
+                className='gray margin-push'
+              />
+              <input
+                placeholder='Maximum Height'
+                type="number"
+                onChange={handleMaxHeight}
+                className='gray margin-push'
+              />
+              <select className='gray margin-push' onChange={handleBodyType}>
+                <option value="">Body Type</option>
+                <option>Toned</option>
+                <option>Average</option>
+                <option>Large</option>
+                <option>Muscular</option>
+                <option>Slim</option>
+                <option>Stocky</option>
+              </select>
+              <select className='gray margin-push' onChange={handlePoliticalView}>
+                <option value="">Political View</option>
+                <option>Liberal</option>
+                <option>Moderate</option>
+                <option>Conservative</option>
+                <option>Other</option>
+                <option>Prefer Not to Say</option>
+              </select>
+              <select className='gray margin-push' onChange={handleGender}>
+                <option value="">Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Non-Binary</option>
+                <option>Other</option>
+                <option>Prefer Not to Say</option>
+              </select>
+              <select className='gray margin-push' onChange={handleSexualOrientation}>
+                <option value="">Sexual Orientation</option>
+                <option>Gay</option>
+                <option>Straight</option>
+                <option>Bisexual</option>
+                <option>Lesbian</option>
+                <option>Allosexual</option>
+                <option>Androsexual</option>
+                <option>Asexual</option>
+                <option>Autosexual</option>
+                <option>Bicurious</option>
+                <option>Demisexual</option>
+                <option>Fluid</option>
+                <option>Graysexual</option>
+                <option>Gynesexual</option>
+                <option>Monosexual</option>
+                <option>Omnisexual</option>
+                <option>Pansexual</option>
+                <option>Polysexual</option>
+                <option>Queer</option>
+                <option>Questioning</option>
+                <option>Skoliosexual</option>
+                <option>Spectrasexual</option>
+                <option>Not Listed</option>
+              </select>
+              <select className='gray margin-push' onChange={handleLookingFor}>
+                <option value="">Looking For</option>
+                <option>Chat</option>
+                <option>Dates</option>
+                <option>Friends</option>
+                <option>Networking</option>
+                <option>Relationship</option>
+                <option>Right Now</option>
+              </select>
+              <select className='gray margin-push' onChange={handleHuman}>
+                <option value="">Human</option>
+                <option>Have Human</option>
+                <option>Want Human</option>
+                <option>Don&apos;t Want Human</option>
+              </select>
+              <select className='gray margin-push' onChange={handleDrinking}>
+                <option value={null}>Drinking</option>
+                <option value={true}>Yes</option>
+                <option value={false}>No</option>
+              </select>
+              <select className='gray margin-push' onChange={handleSmoking}>
+                <option value={null}>Smoking</option>
+                <option value={true}>Yes</option>
+                <option value={false}>No</option>
+              </select>
+              <select className='gray margin-push' onChange={handleReligion}>
+                <option value="">Religion</option>
+                <option>Buddhist</option>
+                <option>Catholic</option>
+                <option>Christian</option>
+                <option>Hindu</option>
+                <option>Jewish</option>
+                <option>Muslim</option>
+                <option>Spiritual</option>
+                <option>Agnostic</option>
+                <option>Atheist</option>
+                <option>Other</option>
+                <option>Prefer Not to Say</option>
+              </select>
+              <select className='gray margin-push' onChange={handleHouseTrained}>
+                <option value={null}>House Trained</option>
+                <option value={true}>Yes</option>
+                <option value={false}>No</option>
+              </select>
+              <select className='gray margin-push' onChange={handleDietaryRequirements}>
+                <option value="">Dietary Requirement</option>
+                <option>Vegetarian</option>
+                <option>Vegan</option>
+                <option>Gluten Free</option>
+                <option>Dairy Free</option>
+                <option>Pescatarian</option>
+                <option>Paleo</option>
+                <option>Keto</option>
+                <option>Kosher</option>
+                <option>Halal</option>
+              </select>
+              <select className='gray margin-push' onChange={handleChildren}>
+                <option value="">Children</option>
+                <option>Have Children</option>
+                <option>Want Children</option>
+                <option>Don&apos;t Want Children</option>
+              </select>
+            </Box>
       }
 
       <Box sx={{ mx: 'auto', width: '80%' }}>
