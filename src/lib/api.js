@@ -59,7 +59,7 @@ export function createChat(formData) {
 }
 
 export function deleteChat(chatId) {
-  return axios.post(`${baseUrl}/chat/${chatId}`, headers())
+  return axios.delete(`${baseUrl}/chat/${chatId}`, headers())
 }
 
 //* Message
