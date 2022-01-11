@@ -81,7 +81,7 @@ function ProfileEdit() {
     <section className="section">
       <div className="container">
         <Card
-          sx={{ width: '50%', p: 10, mx: 'auto', mt: 10, display: 'flex' }}
+          sx={{ width: '50%', p: 10, pt: 5, mx: 'auto', mt: 10, display: 'flex' }}
         >
           {isError && <Error />}
           <ProfileEditForm
