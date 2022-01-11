@@ -20,8 +20,6 @@ function MessageCard({ singleMessage, setAllMessages }) {
     }
   }, [currentUserId, singleMessage.sender])
 
-  // console.log('all', allMessages)
-
   const handleDelete = async () => {
     if (window.confirm('Do you want to delete this message?')) {
       try {

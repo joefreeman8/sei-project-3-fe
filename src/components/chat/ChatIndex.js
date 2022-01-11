@@ -8,9 +8,6 @@ function ChatIndex() {
 
   const [chats, setChats] = React.useState([])
 
-  // const [searchValue, setSearchValue] = React.useState('')
-
-
   React.useEffect(() => {
     const getChatData = async () => {
       try {
@@ -24,26 +21,6 @@ function ChatIndex() {
     getChatData()
   }, [])
 
-  
-
-  //   //* Search Bar
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault() 
-  //   searchValue.toLowerCase()
-  // }
-
-  // const handleChange = (e) => {
-  //   // console.log(e.target.value)
-  //   setSearchValue(e.target.value)
-  // }
-
-  //   // const searchedUser = (users) => {
-  //   //   return users.filter(user => {
-      
-  //   //   })
-  //   // }
-
 
   return (
     <div>
@@ -52,20 +29,8 @@ function ChatIndex() {
         <Box  sx={{ p: 2 }}>
           <h3 className='purple'>Message Your Potential Sniffs</h3>
         </Box>
-
         <div>
-          {/* <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            onChange={handleChange}
-            placeholder="search by name"
-          />
-          <div>
-            <button type="submit" onSubmit={handleSubmit}>Search</button>
-          </div>
-        </form> */}
         </div>
-
         <div>
           {chats?.map(chat => (
             <ChatCard 
