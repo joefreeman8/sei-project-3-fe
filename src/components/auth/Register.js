@@ -11,7 +11,7 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 // import InputAdornment from '@mui/material/InputAdornment'
 // import InputLabel from '@mui/material/InputLabel'
-// import MenuItem from '@mui/material/MenuItem'
+import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import Card from '@mui/material/Card'
@@ -80,14 +80,14 @@ function Register() {
 
   return (
     <div className="register-card">
-      <Card sx={{ width: '50%', mx: 'auto', display: 'flex' }}>
-        
+      <Card sx={{ width: '50%', p: 10, pt: 5, pb: 5, mx: 'auto', mt: 10, display: 'flex' }}>
         <form onSubmit={handleSubmit} className="register-form">
-          <div><p className="go-login-signup">Already signed up?</p><Link to="/login" id="login-register"> Log In</Link></div>
-
-          
+          <div>
+            <p className="go-login-signup">Already signed up?
+              <Link to="/login" id="login-register"> Log In</Link>
+            </p>
+          </div>
           <div className="credentials">
-
             <label htmlFor="name" className="register-title">Name</label>
             <Box
               component="form"
@@ -102,7 +102,8 @@ function Register() {
                 onChange={handleChange}
               />
             </Box>
-          
+          </div>
+          <div>
             <label htmlFor="email" className="register-title">Email</label>
             <Box
               component="form"
@@ -118,7 +119,8 @@ function Register() {
                 onChange={handleChange}
               />
             </Box>
-
+          </div>
+          <div>
             <label htmlFor="password" className="register-title">Password</label>
             <Box
               component="form"
@@ -134,8 +136,8 @@ function Register() {
                 onChange={handleChange}
               />
             </Box>
-
-
+          </div>
+          <div>
             <label htmlFor="passwordConfirmation" className="register-title">Password Confirmation</label>
             <Box
               component="form"
@@ -151,11 +153,8 @@ function Register() {
                 onChange={handleChange}
               />
             </Box>
-
           </div>
-
-
-          <div className="extra-info">
+          <div>
             <label htmlFor="animalType" className="register-title">What animal are you?</label>
             <Box
               component="form"
@@ -170,27 +169,29 @@ function Register() {
                 onChange={handleChange}
               />
             </Box>
-
-
+          </div>
+          <div>
             <label htmlFor="lookingFor" className="register-title">
-            Looking For
+              Looking For
             </label>
             <FormControl fullWidth>
               <Select
                 name="lookingFor"
                 id="lookingFor"
+                labelId="lookingFor"
                 onChange={handleChange}
                 value={formData.lookingFor}>
-                <option></option>
-                <option>Chat</option>
-                <option>Dates</option>
-                <option>Friends</option>
-                <option>Networking</option>
-                <option>Relationship</option>
-                <option>Right Now</option>
+                <MenuItem value={''}></MenuItem>
+                <MenuItem value={'Chat'}>Chat</MenuItem>
+                <MenuItem value={'Dates'}>Dates</MenuItem>
+                <MenuItem value={'Friends'}>Friends</MenuItem>
+                <MenuItem value={'Networking'}>Networking</MenuItem>
+                <MenuItem value={'Relationship'}>Relationship</MenuItem>
+                <MenuItem value={'Right Now'}>Right Now</MenuItem>
               </Select>
             </FormControl>
-
+          </div>
+          <div>
             <label htmlFor="age" className="register-title">Age</label>
             <Box
               component="form"
@@ -206,7 +207,8 @@ function Register() {
                 onChange={handleChange}
               />
             </Box>
-
+          </div>
+          <div>
             <label htmlFor="elevatorPitch" className="register-title">Elevator Pitch</label>
             <Box
               component="form"
@@ -220,9 +222,7 @@ function Register() {
                 onChange={handleChange}
               />
             </Box>
-
           </div>
-
           <div>
             <label htmlFor="picture" className="register-title">Add a photo</label>
             <input
@@ -232,21 +232,20 @@ function Register() {
               id="picture"
               onChange={handleImageUpload}
             />
-
+            <img
+              src={formData.picture}
+              className="edit-picture"
+              alt="Upload Image"
+              id="picture"
+            />
           </div>
-
-          <Button href="/register" className="login" id="register-login-button" type="submit">
-          Find me a mate!
+          <Button className="login" id="register-login-button" type="submit">
+            Find me a mate!
           </Button>
-
         </form>
-
       </Card>
-
     </div>
-
   )
-
 }
 
 export default Register

@@ -66,13 +66,14 @@ function Login() {
 
   return (
     <div>
-      <Card sx={{ width: '50%', mx: 'auto', display: 'flex' }}>
+      <Card sx={{ width: '50%', p: 5, mx: 'auto', mt: 10, display: 'flex' }}>
 
         <form onSubmit={handleSubmit} className="login-form">
           <div>
-            <p className="go-login-signup">No account?</p><Link to="/register" id="login-register"> Register here</Link>
+            <p className="go-login-signup"> No account?
+              <Link to="/register" id="login-register"> Register here</Link>
+            </p>
           </div>
-
           <div className="credentials">
             <label className="login-title" htmlFor="email" >
             Email
@@ -91,7 +92,6 @@ function Login() {
                 onChange={twoCalls}
               />
             </Box>
-
           </div>
           <div>
             <label className="login-title" htmlFor="password">
@@ -111,13 +111,12 @@ function Login() {
                 onChange={handleChange}
               />
             </Box>
-
           </div>
           {isError && (
             <p>Password or Email were incorrect.</p>
           )}
-          <Button href="/potentialsniffs" id="register-login-button" type="submit">
-          Log Me In!
+          <Button id="register-login-button" type="submit">
+            Log Me In!
           </Button>
         </form>
       </Card>

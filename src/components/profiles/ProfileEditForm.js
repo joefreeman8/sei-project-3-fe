@@ -36,6 +36,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
 
   return (
     <form className="" onSubmit={handleSubmit}>
+      <h1>Edit Profile</h1>
       <div>
         <label htmlFor="name" className="label">
           <h3>Name</h3>
@@ -67,8 +68,6 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
         </label>
         <div>
           <img
-            // className={`input ${formErrors.picture ? 'error' : ''}`}
-            // type="file"
             src={formData.picture}
             className="edit-picture"
             alt="profile picture"
@@ -215,7 +214,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
         <div>
           <FormControl sx={{ m: 1, width: '50%' }}>
             <Select
-              name="bodyType"
+              name=""
               id="bodyType"
               labelId="bodyType"
               onChange={handleChange}
@@ -239,7 +238,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
         <div>
           <FormControl sx={{ m: 1, width: '50%' }}>
             <Select
-              name="politicalView"
+              name=""
               id="politicalView"
               labelId="politicalView"
               onChange={handleChange}
@@ -283,7 +282,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
         <div>
           <FormControl sx={{ m: 1, width: '50%' }}>
             <Select
-              name="sexualOrientation"
+              name=""
               id="sexualOrientation"
               labelId="sexualOrientation"
               onChange={handleChange}
@@ -344,20 +343,20 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
         <div>
           <FormControl sx={{ m: 1, width: '50%' }}>
             <Select
-              name="religion"
+              name=""
               id="religion"
               labelId="religion"
               onChange={handleChange}
               value={formData.religion}>
               <MenuItem value={''}></MenuItem>
               <MenuItem value={'Buddhist'}>Buddhist</MenuItem>
-              <MenuItem value={'Christian'}>Catholic</MenuItem>
+              <MenuItem value={'Christian'}>Christian</MenuItem>
               <MenuItem value={'Hindu'}>Hindu</MenuItem>
               <MenuItem value={'Jewish'}>Jewish</MenuItem>
               <MenuItem value={'Muslim'}>Muslim</MenuItem>
               <MenuItem value={'Spiritual'}>Spiritual</MenuItem>
               <MenuItem value={'Agnostic'}>Agnostic</MenuItem>
-              <MenuItem value={'Athiest'}>Atheist</MenuItem>
+              <MenuItem value={'Atheist'}>Atheist</MenuItem>
               <MenuItem value={'Other'}>Other</MenuItem>
               <MenuItem value={'Prefer Not To Say'}>Prefer Not To Say</MenuItem>
             </Select>
