@@ -217,13 +217,12 @@ h4 {
 .sender {
   color: white;
   padding: 10px;
-  overflow-wrap: normal;
-}
+  word-break: break-word;}
 
 .receiver {
   color: white;
   padding: 10px;
-  overflow-wrap: normal;
+  word-break: break-word;
 }
 
 .senderBubble {
