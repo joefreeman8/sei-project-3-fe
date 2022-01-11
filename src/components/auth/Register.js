@@ -6,21 +6,16 @@ import { setToken } from '../../lib/auth'
 import { loginUser, getAllProfiles } from '../../lib/api'
 
 
-// import Checkbox from '@mui/material/Checkbox'
-// import { deepPurple } from '@mui/material/colors'
-// import RadioGroup from '@mui/material/RadioGroup'
 // import FormControlLabel from '@mui/material/FormControlLabel'
-// import Radio from '@mui/material/Radio'
-
-// import Box from '@mui/material/Box'
-// import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
 // import InputAdornment from '@mui/material/InputAdornment'
-// // import InputLabel from '@mui/material/InputLabel'
+// import InputLabel from '@mui/material/InputLabel'
 // import MenuItem from '@mui/material/MenuItem'
-// import FormControl from '@mui/material/FormControl'
-// import Select from '@mui/material/Select'
-
-// import Button from '@mui/material/Button'
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
+import Card from '@mui/material/Card'
+import Button from '@mui/material/Button'
 
 
 
@@ -84,96 +79,170 @@ function Register() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className="credentials">
-          <label htmlFor="name">Name</label>
-          <input
-            placeholder="Name"
-            name="name"
-            id="name"
-            onChange={handleChange}
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
-            id="email"
-            onChange={handleChange}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            id="password"
-            onChange={handleChange}
-          />
-          <label htmlFor="passwordConfirmation">Password Confirmation</label>
-          <input
-            type="password"
-            placeholder="Password Confirmation"
-            name="passwordConfirmation"
-            id="passwordConfirmation"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="extra-info">
-          <label htmlFor="animalType">What animal are you?</label>
-          <input
-            placeholder="Goat, Dragon, dandeLion?"
-            name="animalType"
-            id="animalType"
-            onChange={handleChange}
-          />
-          <label htmlFor="lookingFor" className="label">
+    <div className="register-card">
+      <Card sx={{ width: '50%', mx: 'auto', display: 'flex' }}>
+        
+        <form onSubmit={handleSubmit} className="register-form">
+          <div><p className="go-login-signup">Already signed up?</p><Link to="/login" id="login-register"> Log In</Link></div>
+
+          
+          <div className="credentials">
+
+            <label htmlFor="name" className="register-title">Name</label>
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+            >
+              <TextField
+                placeholder="Name"
+                name="name"
+                id="name"
+                onChange={handleChange}
+              />
+            </Box>
+          
+            <label htmlFor="email" className="register-title">Email</label>
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+            >
+              <TextField
+                type="email"
+                placeholder="Email Address"
+                name="email"
+                id="email"
+                onChange={handleChange}
+              />
+            </Box>
+
+            <label htmlFor="password" className="register-title">Password</label>
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+            >
+              <TextField
+                type="password"
+                placeholder="Password"
+                name="password"
+                id="password"
+                onChange={handleChange}
+              />
+            </Box>
+
+
+            <label htmlFor="passwordConfirmation" className="register-title">Password Confirmation</label>
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+            >
+              <TextField
+                type="password"
+                placeholder="Password Confirmation"
+                name="passwordConfirmation"
+                id="passwordConfirmation"
+                onChange={handleChange}
+              />
+            </Box>
+
+          </div>
+
+
+          <div className="extra-info">
+            <label htmlFor="animalType" className="register-title">What animal are you?</label>
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+            >
+              <TextField
+                placeholder="Goat, Dragon, dandeLion?"
+                name="animalType"
+                id="animalType"
+                onChange={handleChange}
+              />
+            </Box>
+
+
+            <label htmlFor="lookingFor" className="register-title">
             Looking For
-          </label>
-          <select
-            name="lookingFor"
-            id="lookingFor"
-            onChange={handleChange}
-            value={formData.lookingFor}>
-            <option></option>
-            <option>Chat</option>
-            <option>Dates</option>
-            <option>Friends</option>
-            <option>Networking</option>
-            <option>Relationship</option>
-            <option>Right Now</option>
-          </select>
-          <label htmlFor="age">Age</label>
-          <input
-            type="number"
-            placeholder="Age"
-            name="age"
-            id="age"
-            onChange={handleChange}
-          />
-          <label htmlFor="elevatorPitch">Elevator Pitch</label>
-          <input
-            placeholder="Your best one liner"
-            name="elevatorPitch"
-            id="elevatorPitch"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="picture">Add a photo</label>
-          <input
-            type="file"
-            accept="image/png, image/jpeg"
-            name="picture"
-            id="picture"
-            onChange={handleImageUpload}
-          />
-        </div>
-        <button type="submit">
+            </label>
+            <FormControl fullWidth>
+              <Select
+                name="lookingFor"
+                id="lookingFor"
+                onChange={handleChange}
+                value={formData.lookingFor}>
+                <option></option>
+                <option>Chat</option>
+                <option>Dates</option>
+                <option>Friends</option>
+                <option>Networking</option>
+                <option>Relationship</option>
+                <option>Right Now</option>
+              </Select>
+            </FormControl>
+
+            <label htmlFor="age" className="register-title">Age</label>
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+            >
+              <TextField
+                type="number"
+                placeholder="Age"
+                name="age"
+                id="age"
+                onChange={handleChange}
+              />
+            </Box>
+
+            <label htmlFor="elevatorPitch" className="register-title">Elevator Pitch</label>
+            <Box
+              component="form"
+              sx={{
+                '& .MuiTextField-root': { m: 1, width: '25ch' },
+              }}>
+              <TextField
+                placeholder="Your best one liner"
+                name="elevatorPitch"
+                id="elevatorPitch"
+                onChange={handleChange}
+              />
+            </Box>
+
+          </div>
+
+          <div>
+            <label htmlFor="picture" className="register-title">Add a photo</label>
+            <input
+              type="file"
+              accept="image/png, image/jpeg"
+              name="picture"
+              id="picture"
+              onChange={handleImageUpload}
+            />
+
+          </div>
+
+          <Button href="/register" className="login" id="register-login-button" type="submit">
           Find me a mate!
-        </button>
-      </form>
-      <p>Already signed up? <Link to="/login" className="login">Log In</Link></p>
+          </Button>
+
+        </form>
+
+      </Card>
+
     </div>
 
   )

@@ -1,6 +1,6 @@
 //@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=Meow+Script&family=Raleway:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 *{
   margin:0;
@@ -333,4 +333,57 @@ p {
 ::placeholder {
   color: black;
   font-weight: 550;
+}
+
+.register-form {
+  margin: 30px;
+}
+
+.go-login-signup {
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  color: #1D056D;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+#login-register {
+  color: #1D056D;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.credentials {
+  margin-top: 20px;
+}
+
+
+.register-title {
+  color: #1D056D;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 14px;
+}
+
+.login-form {
+  margin: 30px;
+}
+
+.login-title {
+  color: #1D056D;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 14px;
+}
+
+#register-login-button {
+  color: white;
+  background-color: #1D056D;
+  margin-top:10px;
+  margin-left: 10px;
+}
+
+#register-button:hover {
+  color: #1D056D;
+  background-color: white;
 }

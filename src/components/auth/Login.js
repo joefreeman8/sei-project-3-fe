@@ -4,6 +4,11 @@ import { loginUser } from '../../lib/api'
 import { setToken } from '../../lib/auth'
 import { getAllProfiles } from '../../lib/api'
 
+import Card from '@mui/material/Card'
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+
 const initialState = {
   email: '',
   password: '',
@@ -61,39 +66,61 @@ function Login() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label className="label" htmlFor="email">
+      <Card sx={{ width: '50%', mx: 'auto', display: 'flex' }}>
+
+        <form onSubmit={handleSubmit} className="login-form">
+          <div>
+            <p className="go-login-signup">No account?</p><Link to="/register" id="login-register"> Register here</Link>
+          </div>
+
+          <div className="credentials">
+            <label className="login-title" htmlFor="email" >
             Email
-          </label>
-          <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
-            id="email"
-            onChange={twoCalls}
-          />
-        </div>
-        <div>
-          <label className="label" htmlFor="password">
+            </label>
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+            >
+              <TextField
+                type="email"
+                placeholder="Email Address"
+                name="email"
+                id="email"
+                onChange={twoCalls}
+              />
+            </Box>
+
+          </div>
+          <div>
+            <label className="login-title" htmlFor="password">
             Password
-          </label>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            id="password"
-            onChange={handleChange}
-          />
-        </div>
-        {isError && (
-          <p>Password or Email were incorrect.</p>
-        )}
-        <button type="submit">
+            </label>
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+            >
+              <TextField
+                type="password"
+                placeholder="Password"
+                name="password"
+                id="password"
+                onChange={handleChange}
+              />
+            </Box>
+
+          </div>
+          {isError && (
+            <p>Password or Email were incorrect.</p>
+          )}
+          <Button href="/potentialsniffs" id="register-login-button" type="submit">
           Log Me In!
-        </button>
-      </form>
-      <p>No account? <Link to="/register" className="register">Register here</Link></p>
+          </Button>
+        </form>
+      </Card>
     </div>
   )
 }
