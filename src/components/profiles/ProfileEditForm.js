@@ -38,7 +38,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
     <form className="" onSubmit={handleSubmit}>
       <div>
         <label htmlFor="name" className="label">
-          Name
+          <h3>Name</h3>
         </label>
         <Box
           component="form"
@@ -63,14 +63,14 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
       </div>
       <div>
         <label htmlFor="picture" className="label">
-          Profile Picture
+          <h3>Profile Picture</h3>
         </label>
         <div>
           <img
             // className={`input ${formErrors.picture ? 'error' : ''}`}
             // type="file"
             src={formData.picture}
-            className="nav-logo"
+            className="edit-picture"
             alt="profile picture"
             id="picture"
           />
@@ -87,7 +87,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
       </div>
       <div>
         <label htmlFor="elevatorPitch" className="label">
-          Elevator Pitch
+          <h3>Elevator Pitch</h3>
         </label>
         <Box
           component="form"
@@ -114,7 +114,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
       </div>
       <div>
         <label htmlFor="age" className="label">
-          Age
+          <h3>Age</h3>
         </label>
         <Box
           component="form"
@@ -140,7 +140,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
       </div>
       <div>
         <label htmlFor="height" className="label">
-          Height (cm)
+          <h3>Height (cm)</h3>
         </label>
         <Box
           component="form"
@@ -164,7 +164,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
       </div>
       <div>
         <label htmlFor="weight" className="label">
-          Weight (kg)
+          <h3>Weight (kg)</h3>
         </label>
         <Box
           component="form"
@@ -190,7 +190,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
 
       <div>
         <label htmlFor="animalType" className="label">
-          Animal Type
+          <h3>Animal Type</h3>
         </label>
         <Box
           component="form"
@@ -210,175 +210,189 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
       </div>
       <div>
         <label htmlFor="bodyType" className="label">
-          Body Type
+          <h3>Body Type</h3>
         </label>
-        <FormControl fullWidth>
-          <Select
-            name="bodyType"
-            id="bodyType"
-            labelId="bodyType"
-            onChange={handleChange}
-            value={formData.bodyType}>
-            <MenuItem value={''}></MenuItem>
-            <MenuItem value={'Athletic'}>Athletic</MenuItem>
-            <MenuItem value={'Toned'}>Toned</MenuItem>
-            <MenuItem value={'Average'}>Average</MenuItem>
-            <MenuItem value={'Large'}>Large</MenuItem>
-            <MenuItem value={'Muscular'}>Muscular</MenuItem>
-            <MenuItem value={'Slim'}>Slim</MenuItem>
-            <MenuItem value={'Stocky'}>Stocky</MenuItem>
-          </Select>
-        </FormControl>
+        <div>
+          <FormControl sx={{ m: 1, width: '50%' }}>
+            <Select
+              name="bodyType"
+              id="bodyType"
+              labelId="bodyType"
+              onChange={handleChange}
+              value={formData.bodyType}>
+              <MenuItem value={''}></MenuItem>
+              <MenuItem value={'Athletic'}>Athletic</MenuItem>
+              <MenuItem value={'Toned'}>Toned</MenuItem>
+              <MenuItem value={'Average'}>Average</MenuItem>
+              <MenuItem value={'Large'}>Large</MenuItem>
+              <MenuItem value={'Muscular'}>Muscular</MenuItem>
+              <MenuItem value={'Slim'}>Slim</MenuItem>
+              <MenuItem value={'Stocky'}>Stocky</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
       </div>
       <div>
         <label htmlFor="politicalView" className="label">
-          Political View
+          <h3>Political View</h3>
         </label>
-        <FormControl fullWidth>
-          <Select
-            name="politicalView"
-            id="politicalView"
-            labelId="politicalView"
-            onChange={handleChange}
-            value={formData.politicalView}>
-            <MenuItem value={''}></MenuItem>
-            <MenuItem value={'Liberal'}>Liberal</MenuItem>
-            <MenuItem value={'Moderate'}>Moderate</MenuItem>
-            <MenuItem value={'Conservative'}>Conservative</MenuItem>
-            <MenuItem value={'Other'}>Other</MenuItem>
-            <MenuItem value={'Prefer Not To Say'}>Prefer Not To Say</MenuItem>
-          </Select>
-        </FormControl>
+        <div>
+          <FormControl sx={{ m: 1, width: '50%' }}>
+            <Select
+              name="politicalView"
+              id="politicalView"
+              labelId="politicalView"
+              onChange={handleChange}
+              value={formData.politicalView}>
+              <MenuItem value={''}></MenuItem>
+              <MenuItem value={'Liberal'}>Liberal</MenuItem>
+              <MenuItem value={'Moderate'}>Moderate</MenuItem>
+              <MenuItem value={'Conservative'}>Conservative</MenuItem>
+              <MenuItem value={'Other'}>Other</MenuItem>
+              <MenuItem value={'Prefer Not To Say'}>Prefer Not To Say</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
       </div>
       <div>
         <label htmlFor="gender" className="label">
-          Gender
+          <h3>Gender</h3>
         </label>
-        <FormControl fullWidth>
-          <Select
-            name="gender"
-            id="gender"
-            labelId="gender"
-            onChange={handleChange}
-            value={formData.gender}>
-            <MenuItem value={''}></MenuItem>
-            <MenuItem value={'Male'}>Male</MenuItem>
-            <MenuItem value={'Female'}>Female</MenuItem>
-            <MenuItem value={'Non-Binary'}>Non-Binary</MenuItem>
-            <MenuItem value={'Other'}>Other</MenuItem>
-            <MenuItem value={'Prefer Not To Say'}>Prefer Not To Say</MenuItem>
-          </Select>
-        </FormControl>
+        <div>
+          <FormControl sx={{ m: 1, width: '50%' }}>
+            <Select
+              name="gender"
+              id="gender"
+              labelId="gender"
+              onChange={handleChange}
+              value={formData.gender}>
+              <MenuItem value={''}></MenuItem>
+              <MenuItem value={'Male'}>Male</MenuItem>
+              <MenuItem value={'Female'}>Female</MenuItem>
+              <MenuItem value={'Non-Binary'}>Non-Binary</MenuItem>
+              <MenuItem value={'Other'}>Other</MenuItem>
+              <MenuItem value={'Prefer Not To Say'}>Prefer Not To Say</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
       </div>
       <div>
         <label htmlFor="sexualOrientation" className="label">
-          Sexual Orientation
+          <h3>Sexual Orientation</h3>
         </label>
-        <FormControl fullWidth>
-          <Select
-            name="sexualOrientation"
-            id="sexualOrientation"
-            labelId="sexualOrientation"
-            onChange={handleChange}
-            value={formData.sexualOrientation}>
-            <MenuItem value={''}></MenuItem>
-            <MenuItem value={'Gay'}>Gay</MenuItem>
-            <MenuItem value={'Straight'}>Straight</MenuItem>
-            <MenuItem value={'Bisexual'}>Bisexual</MenuItem>
-            <MenuItem value={'Lesbian'}>Lesbian</MenuItem>
-            <MenuItem value={'Allosexual'}>Allosexual</MenuItem>
-            <MenuItem value={'Asexual'}>Asexual</MenuItem>
-            <MenuItem value={'Androsexual'}>Androsexual</MenuItem>
-            <MenuItem value={'Autosexual'}>Autosexual</MenuItem>
-            <MenuItem value={'Bicurious'}>Bicurious</MenuItem>
-            <MenuItem value={'Demisexual'}>Demisexual</MenuItem>
-            <MenuItem value={'Fluid'}>Fluid</MenuItem>
-            <MenuItem value={'Gynesexual'}>Gynesexual</MenuItem>
-            <MenuItem value={'Monosexual'}>Monosexual</MenuItem>
-            <MenuItem value={'Omnisexual'}>Omnisexual</MenuItem>
-            <MenuItem value={'Pansexual'}>Pansexual</MenuItem>
-            <MenuItem value={'Polysexual'}>Polysexual</MenuItem>
-            <MenuItem value={'Queer'}>Queer</MenuItem>
-            <MenuItem value={'Questioning'}>Questioning</MenuItem>
-            <MenuItem value={'Skoliosexual'}>Skoliosexual</MenuItem>
-            <MenuItem value={'Spectrasexual'}>Spectrasexual</MenuItem>
-            <MenuItem value={'Not Listed'}>Not Listed</MenuItem>
-          </Select>
-        </FormControl>
+        <div>
+          <FormControl sx={{ m: 1, width: '50%' }}>
+            <Select
+              name="sexualOrientation"
+              id="sexualOrientation"
+              labelId="sexualOrientation"
+              onChange={handleChange}
+              value={formData.sexualOrientation}>
+              <MenuItem value={''}></MenuItem>
+              <MenuItem value={'Gay'}>Gay</MenuItem>
+              <MenuItem value={'Straight'}>Straight</MenuItem>
+              <MenuItem value={'Bisexual'}>Bisexual</MenuItem>
+              <MenuItem value={'Lesbian'}>Lesbian</MenuItem>
+              <MenuItem value={'Allosexual'}>Allosexual</MenuItem>
+              <MenuItem value={'Asexual'}>Asexual</MenuItem>
+              <MenuItem value={'Androsexual'}>Androsexual</MenuItem>
+              <MenuItem value={'Autosexual'}>Autosexual</MenuItem>
+              <MenuItem value={'Bicurious'}>Bicurious</MenuItem>
+              <MenuItem value={'Demisexual'}>Demisexual</MenuItem>
+              <MenuItem value={'Fluid'}>Fluid</MenuItem>
+              <MenuItem value={'Gynesexual'}>Gynesexual</MenuItem>
+              <MenuItem value={'Monosexual'}>Monosexual</MenuItem>
+              <MenuItem value={'Omnisexual'}>Omnisexual</MenuItem>
+              <MenuItem value={'Pansexual'}>Pansexual</MenuItem>
+              <MenuItem value={'Polysexual'}>Polysexual</MenuItem>
+              <MenuItem value={'Queer'}>Queer</MenuItem>
+              <MenuItem value={'Questioning'}>Questioning</MenuItem>
+              <MenuItem value={'Skoliosexual'}>Skoliosexual</MenuItem>
+              <MenuItem value={'Spectrasexual'}>Spectrasexual</MenuItem>
+              <MenuItem value={'Not Listed'}>Not Listed</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
       </div>
       <div>
         <label htmlFor="lookingFor" className="label">
-          Looking For
+          <h3>Looking For</h3>
         </label>
-        <FormControl fullWidth>
-          <Select
-            name="lookingFor"
-            id="lookingFor"
-            labelId="lookingFor"
-            onChange={handleChange}
-            value={formData.lookingFor}>
-            <MenuItem value={''}></MenuItem>
-            <MenuItem value={'Chat'}>Chat</MenuItem>
-            <MenuItem value={'Dates'}>Dates</MenuItem>
-            <MenuItem value={'Friends'}>Friends</MenuItem>
-            <MenuItem value={'Networking'}>Networking</MenuItem>
-            <MenuItem value={'Relationship'}>Relationship</MenuItem>
-            <MenuItem value={'Right Now'}>Right Now</MenuItem>
-          </Select>
-        </FormControl>
+        <div>
+          <FormControl sx={{ m: 1, width: '50%' }}>
+            <Select
+              name="lookingFor"
+              id="lookingFor"
+              labelId="lookingFor"
+              onChange={handleChange}
+              value={formData.lookingFor}>
+              <MenuItem value={''}></MenuItem>
+              <MenuItem value={'Chat'}>Chat</MenuItem>
+              <MenuItem value={'Dates'}>Dates</MenuItem>
+              <MenuItem value={'Friends'}>Friends</MenuItem>
+              <MenuItem value={'Networking'}>Networking</MenuItem>
+              <MenuItem value={'Relationship'}>Relationship</MenuItem>
+              <MenuItem value={'Right Now'}>Right Now</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
       </div>
       <div>
         <label htmlFor="religion" className="label">
-          Religion
+          <h3>Religion</h3>
         </label>
-        <FormControl fullWidth>
-          <Select
-            name="religion"
-            id="religion"
-            labelId="religion"
-            onChange={handleChange}
-            value={formData.religion}>
-            <MenuItem value={''}></MenuItem>
-            <MenuItem value={'Buddhist'}>Buddhist</MenuItem>
-            <MenuItem value={'Christian'}>Catholic</MenuItem>
-            <MenuItem value={'Hindu'}>Hindu</MenuItem>
-            <MenuItem value={'Jewish'}>Jewish</MenuItem>
-            <MenuItem value={'Muslim'}>Muslim</MenuItem>
-            <MenuItem value={'Spiritual'}>Spiritual</MenuItem>
-            <MenuItem value={'Agnostic'}>Agnostic</MenuItem>
-            <MenuItem value={'Athiest'}>Atheist</MenuItem>
-            <MenuItem value={'Other'}>Other</MenuItem>
-            <MenuItem value={'Prefer Not To Say'}>Prefer Not To Say</MenuItem>
-          </Select>
-        </FormControl>
+        <div>
+          <FormControl sx={{ m: 1, width: '50%' }}>
+            <Select
+              name="religion"
+              id="religion"
+              labelId="religion"
+              onChange={handleChange}
+              value={formData.religion}>
+              <MenuItem value={''}></MenuItem>
+              <MenuItem value={'Buddhist'}>Buddhist</MenuItem>
+              <MenuItem value={'Christian'}>Catholic</MenuItem>
+              <MenuItem value={'Hindu'}>Hindu</MenuItem>
+              <MenuItem value={'Jewish'}>Jewish</MenuItem>
+              <MenuItem value={'Muslim'}>Muslim</MenuItem>
+              <MenuItem value={'Spiritual'}>Spiritual</MenuItem>
+              <MenuItem value={'Agnostic'}>Agnostic</MenuItem>
+              <MenuItem value={'Athiest'}>Atheist</MenuItem>
+              <MenuItem value={'Other'}>Other</MenuItem>
+              <MenuItem value={'Prefer Not To Say'}>Prefer Not To Say</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
       </div>
       <div>
         <label htmlFor="dietaryRequirements" className="label">
-          Dietary Requirements
+          <h3>Dietary Requirements</h3>
         </label>
-        <FormControl fullWidth>
-          <Select
-            name="dietaryRequirements"
-            id="dietaryRequirements"
-            labelId="dietaryRequirements"
-            onChange={handleChange}
-            value={formData.dietaryRequirements}>
-            <MenuItem value={''}></MenuItem>
-            <MenuItem value={'Vegetarian'}>Vegetarian</MenuItem>
-            <MenuItem value={'Vegan'}>Vegan</MenuItem>
-            <MenuItem value={'Gluten Free'}>Gluten Free</MenuItem>
-            <MenuItem value={'Dairy Free'}>Dairy Free</MenuItem>
-            <MenuItem value={'Pesatarian'}>Pescatarian</MenuItem>
-            <MenuItem value={'Paleo'}>Paleo</MenuItem>
-            <MenuItem value={'Keto'}>Keto</MenuItem>
-            <MenuItem value={'Kosher'}>Kosher</MenuItem>
-            <MenuItem value={'Halal'}>Halal</MenuItem>
-          </Select>
-        </FormControl>
+        <div>
+          <FormControl sx={{ m: 1, width: '50%' }}>
+            <Select
+              name="dietaryRequirements"
+              id="dietaryRequirements"
+              labelId="dietaryRequirements"
+              onChange={handleChange}
+              value={formData.dietaryRequirements}>
+              <MenuItem value={''}></MenuItem>
+              <MenuItem value={'Vegetarian'}>Vegetarian</MenuItem>
+              <MenuItem value={'Vegan'}>Vegan</MenuItem>
+              <MenuItem value={'Gluten Free'}>Gluten Free</MenuItem>
+              <MenuItem value={'Dairy Free'}>Dairy Free</MenuItem>
+              <MenuItem value={'Pesatarian'}>Pescatarian</MenuItem>
+              <MenuItem value={'Paleo'}>Paleo</MenuItem>
+              <MenuItem value={'Keto'}>Keto</MenuItem>
+              <MenuItem value={'Kosher'}>Kosher</MenuItem>
+              <MenuItem value={'Halal'}>Halal</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
       </div>
       <div>
         <label htmlFor="human" className="label">
-          Human Status
+          <h3>Human Status</h3>
         </label>
         <RadioGroup row aria-label="Human" name="row-radio-buttons-group">
           <FormControlLabel
@@ -449,7 +463,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
       </div>
       <div>
         <label htmlFor="Children" className="label">
-          Children Status
+          <h3>Children Status</h3>
         </label>
         <RadioGroup
           row aria-label="Children" name="row-radio-buttons-group">
@@ -520,76 +534,77 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
         </RadioGroup>
       </div>
       <div>
-        <label htmlFor="drinking" className="label">
-          <Checkbox
-            className="checkbox"
-            value="checkbox"
-            sx={{
-              color: deepPurple[800],
-              '&.Mui-checked': {
-                color: deepPurple[600],
-              },
-            }}
-          >
-            <input
-              type="checkbox"
-              name="drinking"
-              id="drinking"
-              onChange={handleChange}
-              checked={formData.drinking}
-            />
-          </Checkbox>
-          I Like A Drink
-        </label>
-      </div>
-      <div>
-        <label htmlFor="smoking" className="label">
-          <Checkbox
-            className="checkbox"
-            value="checkbox"
-            sx={{
-              color: deepPurple[800],
-              '&.Mui-checked': {
-                color: deepPurple[600],
-              },
-            }}
-          >
-            <input
-              type="checkbox"
-              name="smoking"
-              id="smoking"
-              onChange={handleChange}
-              checked={formData.smoking}
-            />
-          </Checkbox>
-          I Like A Smoke
-        </label>
-      </div>
-      <div>
-        <label htmlFor="houseTrained" className="label">
-          <Checkbox
-            className="checkbox"
-            sx={{
-              color: deepPurple[800],
-              '&.Mui-checked': {
-                color: deepPurple[600],
-              },
-            }}
-            value="checkbox"
-            type="checkbox"
-            name="houseTrained"
-            id="houseTrained"
-            onChange={handleChange}
-            checked={formData.houseTrained}
-          >
-          </Checkbox>
-          I Know Where To Pee
+        <label><h3>Other</h3>
+          <div>
+            <label htmlFor="drinking" className="label">
+              <Checkbox
+                className="checkbox"
+                value="checkbox"
+                sx={{
+                  color: deepPurple[800],
+                  '&.Mui-checked': {
+                    color: deepPurple[600],
+                  },
+                }}
+                type="checkbox"
+                name="drinking"
+                id="drinking"
+                onChange={handleChange}
+                checked={formData.drinking}
+              >
+              </Checkbox>
+              I Like A Drink
+            </label>
+          </div>
+          <div>
+            <label htmlFor="smoking" className="label">
+              <Checkbox
+                className="checkbox"
+                value="checkbox"
+                sx={{
+                  color: deepPurple[800],
+                  '&.Mui-checked': {
+                    color: deepPurple[600],
+                  },
+                }}
+                type="checkbox"
+                name="smoking"
+                id="smoking"
+                onChange={handleChange}
+                checked={formData.smoking}
+              >
+              </Checkbox>
+              I Like A Smoke
+            </label>
+          </div>
+          <div>
+            <label htmlFor="houseTrained" className="label">
+              <Checkbox
+                className="checkbox"
+                sx={{
+                  color: deepPurple[800],
+                  '&.Mui-checked': {
+                    color: deepPurple[600],
+                  },
+                }}
+                type="checkbox"
+                name="houseTrained"
+                id="houseTrained"
+                onChange={handleChange}
+                checked={formData.houseTrained}
+              >
+              </Checkbox>
+              I Know Where To Pee
+            </label>
+          </div>
         </label>
       </div>
       <div>
         <Button
           size="large"
           type="submit"
+          id='purple-button'
+          sx={{ m: 1 }}
         >
           Update
         </Button>
