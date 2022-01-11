@@ -13,6 +13,8 @@ import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
+import TextField from '@mui/material/TextField'
+
 
 const initialState = {
   messages: [{
@@ -104,7 +106,7 @@ function ProfileShow() {
 
 
   return (
-    <Card sx={{ width: '80%', mx: 'auto', display: 'flex' }} >
+    <Card sx={{ width: '80%', mx: 'auto', display: 'flex', mt: 4 }} >
       {isError && <Error />}
       {isLoading && <Loading />}
       {profile && (
@@ -149,27 +151,29 @@ function ProfileShow() {
                 {currentUserId === userId ? (
                   <Button
                     size="large"
-                    href={`/account/${currentUserId}/edit`}>
-                    Edit Page
+                    href={`/account/${currentUserId}/edit`}
+                    id='purple-button'>
+                    Edit Profile
                   </Button>
                 ) :
                   (
                     !isMessaging ?
                       <Button
                         size="large"
-                        
+                        id='purple-button'
                         onClick={handleMessageButtonClick}>
                     Message
                       </Button>
                       : <form onSubmit={createNewChat}>
                         <div className="control">
-                          <input  
-                            type="text"
+                          <TextField  
+                            id="outlined-basic" 
                             name="content" 
-                            placeholder={`Write your first message to ${profile.name}`}
-                            onChange={handleChange} />
+                            label={`Message ${profile.name}`}
+                            onChange={handleChange}
+                            variant="outlined" />
                         </div>
-                        <button type='submit'>Send Message</button>
+                        <Button type="submit" id='purple-button' sx={{ m: 1 }}>Send Message</Button>
                       </form>
                   )}
               </CardActions>

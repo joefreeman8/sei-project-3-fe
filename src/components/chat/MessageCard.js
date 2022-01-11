@@ -1,13 +1,17 @@
 import React from 'react'
 import { isOwner } from '../../lib/auth'
-import { deleteChat, deleteMessage } from '../../lib/api'
+import { deleteChat, deleteMessage, getSingleChat } from '../../lib/api'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import DeleteIcon from '@mui/icons-material/Delete'
+import { IconButton } from '@mui/material'
 
-function MessageCard({ singleMessage, allMessages }) {
+
+
+function MessageCard({ singleMessage, setAllMessages }) {
   const currentUserId = JSON.parse(localStorage.getItem('userId'))
   const [isSender, setIsSender] = React.useState(false)
-  const chatId = useParams()
+  const { chatId } = useParams()
   const navigate = useNavigate()
 
   React.useEffect(() => {
@@ -16,19 +20,19 @@ function MessageCard({ singleMessage, allMessages }) {
     }
   }, [currentUserId, singleMessage.sender])
 
-  console.log('all', allMessages)
+  // console.log('all', allMessages)
 
   const handleDelete = async () => {
     if (window.confirm('Do you want to delete this message?')) {
       try {
-        await deleteMessage(chatId.chatId, singleMessage._id)
-        if (allMessages.length === 0) {
-          console.log(chatId.chatId)
-          await deleteChat(chatId.chatId)
-          navigate('/chats')
-        } else (
-          window.location.reload()
-        )
+        await deleteMessage(chatId, singleMessage._id)
+        const { data } = await getSingleChat(chatId)
+        if (data.messages.length === 0) {
+          await deleteChat(chatId)
+          navigate('/chat')
+        } else {
+          setAllMessages(data.messages)
+        }
       } catch (err) {
         console.log(err)
       }
@@ -37,12 +41,12 @@ function MessageCard({ singleMessage, allMessages }) {
 
 
   return (
-    <div>
+    <div className={isSender ? 'right' : 'left'}>
       <div className={isSender ? 'senderBubble' : 'receiverBubble'}>
         <p className={isSender ? 'sender' : 'receiver'}>
           
           {singleMessage.text}
-          {isOwner(singleMessage.sender) && <button onClick={handleDelete}>X</button>}
+          {isOwner(singleMessage.sender) && <IconButton onClick={handleDelete} aria-label="delete" size="small" color="secondary"><DeleteIcon fontSize="inherit" /></IconButton>}
         </p> 
       </div>
     </div>

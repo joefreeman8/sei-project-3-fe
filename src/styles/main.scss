@@ -215,25 +215,30 @@ h4 {
 }
 
 .sender {
-  color: purple;
-  padding: 15px;
+  color: white;
+  padding: 5px;
 }
 
 .receiver {
-  color: blue;
-  padding: 15px;
+  color: white;
+  padding: 5px 15px;
 }
 
 .senderBubble {
-  background-color: #E6E6FA;
+  background-color: #1D056D;
   border-radius: 25px;
   max-width: 250px;
+  margin: 5px;
+  text-align: right;
+  width: 80%;
 }
 
 .receiverBubble {
-  background-color: #E7FFF8;
+  background-color: darkgrey;
   border-radius: 25px;
   max-width: 250px;
+  margin: 5px;
+  width: 80%;
 }
 
 .write-message {
@@ -243,4 +248,89 @@ h4 {
 	padding: 0;
   border-radius: 25px;
   max-width: 250px;
+}
+
+.nav-logo {
+  height: 50px;
+}
+
+body {
+  background-color: #1D056D;
+}
+
+nav {
+  background-color: white;
+}
+
+.btn.contained {
+  color: #1D056D;
+}
+
+.purple {
+  color: #1D056D;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.chat-card {
+  padding: 10px;
+  width: 300px;
+}
+
+input {
+  border-radius: 4px;
+  padding: 5px;
+  margin: 1px 0px 1px 5px;
+}
+
+select {
+  border-radius: 4px;
+  padding: 5px;
+  margin: 1px 0px 1px 5px;
+  background-color: white;
+}
+
+p {
+  word-break: break-all;
+}
+
+#purple-button {
+  color: white;
+  background-color: #1D056D;
+}
+
+#purple-button:hover {
+  color: #1D056D;
+  background-color: white;
+}
+
+#white-button {
+  color: #1D056D;
+  background-color: white;
+}
+
+#white-buttom:hover {
+  color: white;
+  background-color: #1D056D;
+}
+
+.margin-push {
+  margin: 5px 5px 5px 15px
+}
+
+.gray {
+  color: gray;
+}
+
+::placeholder {
+  color: black;
+  font-weight: 550;
 }

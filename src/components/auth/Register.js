@@ -49,6 +49,7 @@ function Register() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
     setLoginFormData({ ...loginFormData, [e.target.name]: e.target.value })
+    console.log(loginFormData)
   }
 
   const handleSubmit = async (e) => {
@@ -78,16 +79,10 @@ function Register() {
     const data = new FormData()
     data.append('file', e.target.files[0])
     data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
-    try {
-      const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
-      setFormData({ ...formData, picture: res.data.url })
-    } catch (err) {
-      console.log(err)
-    }
-
+    const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
+    setFormData({ ...formData, picture: res.data.url })
+    return
   }
-
-
 
   return (
     <div>
@@ -133,13 +128,22 @@ function Register() {
             id="animalType"
             onChange={handleChange}
           />
-          <label htmlFor="lookingFor">Looking for</label>
-          <input
-            placeholder="Love, Friendship, Belly rubs?"
+          <label htmlFor="lookingFor" className="label">
+            Looking For
+          </label>
+          <select
             name="lookingFor"
             id="lookingFor"
             onChange={handleChange}
-          />
+            value={formData.lookingFor}>
+            <option></option>
+            <option>Chat</option>
+            <option>Dates</option>
+            <option>Friends</option>
+            <option>Networking</option>
+            <option>Relationship</option>
+            <option>Right Now</option>
+          </select>
           <label htmlFor="age">Age</label>
           <input
             type="number"
