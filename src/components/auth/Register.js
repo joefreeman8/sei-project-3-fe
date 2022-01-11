@@ -5,6 +5,25 @@ import axios from 'axios'
 import { setToken } from '../../lib/auth'
 import { loginUser, getAllProfiles } from '../../lib/api'
 
+
+// import Checkbox from '@mui/material/Checkbox'
+// import { deepPurple } from '@mui/material/colors'
+// import RadioGroup from '@mui/material/RadioGroup'
+// import FormControlLabel from '@mui/material/FormControlLabel'
+// import Radio from '@mui/material/Radio'
+
+// import Box from '@mui/material/Box'
+// import TextField from '@mui/material/TextField'
+// import InputAdornment from '@mui/material/InputAdornment'
+// // import InputLabel from '@mui/material/InputLabel'
+// import MenuItem from '@mui/material/MenuItem'
+// import FormControl from '@mui/material/FormControl'
+// import Select from '@mui/material/Select'
+
+// import Button from '@mui/material/Button'
+
+
+
 const initialState = {
   name: '',
   email: '',
