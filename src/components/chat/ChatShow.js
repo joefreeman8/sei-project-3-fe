@@ -1,14 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router'
 
-import { getSingleChat } from '../../lib/api'
+import { getSingleChat, getSingleProfile } from '../../lib/api'
 import { createSingleMessage } from '../../lib/api'
 import MessageCard from './MessageCard'
 import Card from '@mui/material/Card'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
-
-
 
 
 function ChatShow() {
@@ -18,15 +16,18 @@ function ChatShow() {
   const [message, setMessage] = React.useState('')
   const [receiverId, setReceiverId] = React.useState('')
   const currentUserId = JSON.parse(localStorage.getItem('userId'))
-
+  const [receiverName, setReceiverName] = React.useState('')
 
 
 
   React.useEffect(() => {
+
     const getData = async () => {
       try {
         const { data } = await getSingleChat(chatId)
         setAllMessages(data.messages)
+        const profileData = await getSingleProfile(receiverId)
+        setReceiverName(profileData.data.name)
         if (data.userOne === currentUserId) {
           setReceiverId(data.userTwo)
         } else {
@@ -37,7 +38,11 @@ function ChatShow() {
       }
     }
     getData()
-  }, [chatId, currentUserId])
+    const interval = setInterval(getData, 500)
+    return () => clearInterval(interval)
+  }, [chatId, currentUserId, receiverId])
+
+  console.log(allMessages)
 
 
   const handleChange = (e) => {
@@ -54,11 +59,12 @@ function ChatShow() {
       console.log(err)
     }
   }
-  console.log('all messages', allMessages)
+
+
   return (
     <div>
       <Card sx={{ width: '50%', mx: 'auto', display: 'flex', flexDirection: 'column', mt: 4, alignItems: 'center' }} >
-        <h4 className='purple'>Name of Sender</h4>
+        <h3 className='purple margin-top'>{receiverName}</h3>
         <div className='chat-card'>
           {allMessages && allMessages.map(singleMessage => {
             return <MessageCard allMessages={allMessages} key={singleMessage._id} singleMessage={singleMessage} setAllMessages={setAllMessages}/>

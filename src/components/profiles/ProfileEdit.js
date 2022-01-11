@@ -80,7 +80,9 @@ function ProfileEdit() {
   return (
     <section className="section">
       <div className="container">
-        <Card sx={{ width: '80%', mx: 'auto', display: 'flex' }}>
+        <Card
+          sx={{ width: '50%', p: 10, pt: 5, mx: 'auto', mt: 10, display: 'flex' }}
+        >
           {isError && <Error />}
           <ProfileEditForm
             handleSubmit={handleSubmit}

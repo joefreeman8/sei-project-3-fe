@@ -216,17 +216,18 @@ h4 {
 
 .sender {
   color: white;
-  padding: 5px;
-}
+  padding: 10px;
+  word-break: break-word;}
 
 .receiver {
   color: white;
-  padding: 5px 15px;
+  padding: 10px;
+  word-break: break-word;
 }
 
 .senderBubble {
   background-color: #1D056D;
-  border-radius: 25px;
+  border-radius: 10px;
   max-width: 250px;
   margin: 5px;
   text-align: right;
@@ -235,7 +236,7 @@ h4 {
 
 .receiverBubble {
   background-color: darkgrey;
-  border-radius: 25px;
+  border-radius: 10px;
   max-width: 250px;
   margin: 5px;
   width: 80%;
@@ -386,4 +387,16 @@ p {
 #register-button:hover {
   color: #1D056D;
   background-color: white;
+}
+
+.edit-picture {
+  height: 250px;
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  color: #1D056D;
+}
+.margin-top {
+  margin-top: 20px;
 }
