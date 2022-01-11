@@ -61,6 +61,7 @@ function ProfileEdit() {
     setFormData({ ...formData, [e.target.name]: value })
     setFormErrors({ ...formErrors, [e.target.name]: '' })
   }
+  console.log(formData)
 
   const handleSubmit = async e => {
     e.preventDefault()

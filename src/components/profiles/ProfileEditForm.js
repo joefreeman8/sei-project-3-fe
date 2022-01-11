@@ -1,7 +1,26 @@
 import axios from 'axios'
 
-function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData }) {
-  
+import Checkbox from '@mui/material/Checkbox'
+import { deepPurple } from '@mui/material/colors'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Radio from '@mui/material/Radio'
+
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
+// import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
+
+import Button from '@mui/material/Button'
+
+
+
+
+function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, formErrors }) {
+
 
   const handleImageUpload = async (e) => {
     const data = new FormData()
@@ -14,15 +33,20 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData }) 
       console.log(err)
     }
   }
-  
+
   return (
     <form className="" onSubmit={handleSubmit}>
       <div>
         <label htmlFor="name" className="label">
           Name
         </label>
-        <div>
-          <input
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+          }}
+        >
+          <TextField
             // className={`input ${formErrors.name ? 'error' : ''}`}
             placeholder="Name"
             name="name"
@@ -30,7 +54,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData }) 
             onChange={handleChange}
             value={formData.name}
           />
-        </div>
+        </Box>
         {/* {formErrors.name && (
           <Stack sx={{ width: '100%' }} spacing={2}>
             <Alert variant="outlined" severity="error">{formErrors.name}</Alert>
@@ -65,17 +89,23 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData }) 
         <label htmlFor="elevatorPitch" className="label">
           Elevator Pitch
         </label>
-        <div>
-          <textarea
+        <Box
+          component="form"
+          sx={{
+            '& .MuiTextField-root': { m: 1, width: '25ch' },
+          }}>
+          <TextField
             // className={`input ${formErrors.elevatorPitch ? 'error' : ''}`}
             maxLength="140"
+            multiline
+            minRows={3}
             placeholder="Elevator Pitch"
             name="elevatorPitch"
             id="elevatorPitch"
             onChange={handleChange}
             value={formData.elevatorPitch}
           />
-        </div>
+        </Box>
         {/* {formErrors.elevatorPitch && (
           <Stack sx={{ width: '100%' }} spacing={2}>
             <Alert variant="outlined" severity="error">{formErrors.elevatorPitch}</Alert>
@@ -86,8 +116,13 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData }) 
         <label htmlFor="age" className="label">
           Age
         </label>
-        <div>
-          <input
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+          }}
+        >
+          <TextField
             // className={`input ${formErrors.age ? 'error' : ''}`}
             type="number"
             placeholder="Age"
@@ -96,7 +131,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData }) 
             onChange={handleChange}
             value={formData.age}
           />
-        </div>
+        </Box>
         {/* {formErrors.age && (
           <Stack sx={{ width: '100%' }} spacing={2}>
             <Alert variant="outlined" severity="error">{formErrors.age}</Alert>
@@ -107,265 +142,395 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData }) 
         <label htmlFor="height" className="label">
           Height (cm)
         </label>
-        <div>
-          <input
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+          }}
+        >
+          <TextField
             // className={`input ${formErrors.height ? 'error' : ''}`}
             type="number"
             placeholder="Height in cm"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">cm</InputAdornment>,
+            }}
             name="height"
             id="height"
             onChange={handleChange}
             value={formData.height}
           />
-        </div>
-        {/* {formErrors.height && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.height}</Alert>
-          </Stack>
-        )} */}
+        </Box>
       </div>
       <div>
         <label htmlFor="weight" className="label">
           Weight (kg)
         </label>
-        <div>
-          <input
-            // className={`input ${formErrors.weight ? 'error' : ''}`}
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+          }}
+        >
+          <TextField
+            className={`input ${formErrors.weight ? 'error' : ''}`}
+            variant="outlined"
             type="number"
             placeholder="Weight in kg"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+            }}
             name="weight"
             id="weight"
             onChange={handleChange}
             value={formData.weight}
           />
-        </div>
-        {/* {formErrors.weight && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.weight}</Alert>
-          </Stack>
-        )} */}
+        </Box>
       </div>
-      <div>
-        <label htmlFor="bodyType" className="label">
-          Body Type
-        </label>
-        <div>
-          <select
-            name="bodyType"
-            id="bodyType"
-            onChange={handleChange}
-            value={formData.bodyType}>
-            <option></option>
-            <option>Toned</option>
-            <option>Average</option>
-            <option>Large</option>
-            <option>Muscular</option>
-            <option>Slim</option>
-            <option>Stocky</option>
-          </select>
-        </div>
-        {/* {formErrors.bodyType && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.bodyType}</Alert>
-          </Stack>
-        )} */}
-      </div>
+
       <div>
         <label htmlFor="animalType" className="label">
           Animal Type
         </label>
-        <div>
-          <input
-            // className={`input ${formErrors.animalType ? 'error' : ''}`}
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+          }}
+        >
+          <TextField
+            variant="outlined"
             placeholder="Dog, Goat, Dragon, Axolotl... "
             name="animalType"
             id="animalType"
             onChange={handleChange}
             value={formData.animalType}
           />
-        </div>
-        {/* {formErrors.bodyType && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.animalType}</Alert>
-          </Stack>
-        )} */}
+        </Box>
+      </div>
+      <div>
+        <label htmlFor="bodyType" className="label">
+          Body Type
+        </label>
+        <FormControl fullWidth>
+          <Select
+            name="bodyType"
+            id="bodyType"
+            labelId="bodyType"
+            onChange={handleChange}
+            value={formData.bodyType}>
+            <MenuItem value={''}></MenuItem>
+            <MenuItem value={'Athletic'}>Athletic</MenuItem>
+            <MenuItem value={'Toned'}>Toned</MenuItem>
+            <MenuItem value={'Average'}>Average</MenuItem>
+            <MenuItem value={'Large'}>Large</MenuItem>
+            <MenuItem value={'Muscular'}>Muscular</MenuItem>
+            <MenuItem value={'Slim'}>Slim</MenuItem>
+            <MenuItem value={'Stocky'}>Stocky</MenuItem>
+          </Select>
+        </FormControl>
       </div>
       <div>
         <label htmlFor="politicalView" className="label">
           Political View
         </label>
-        <div>
-          <select
+        <FormControl fullWidth>
+          <Select
             name="politicalView"
             id="politicalView"
+            labelId="politicalView"
             onChange={handleChange}
             value={formData.politicalView}>
-            <option></option>
-            <option>Liberal</option>
-            <option>Moderate</option>
-            <option>Conservative</option>
-            <option>Other</option>
-            <option>Prefer Not to Say</option>
-          </select>
-        </div>
-        {/* {formErrors.politicalView && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.politicalView}</Alert>
-          </Stack>
-        )} */}
+            <MenuItem value={''}></MenuItem>
+            <MenuItem value={'Liberal'}>Liberal</MenuItem>
+            <MenuItem value={'Moderate'}>Moderate</MenuItem>
+            <MenuItem value={'Conservative'}>Conservative</MenuItem>
+            <MenuItem value={'Other'}>Other</MenuItem>
+            <MenuItem value={'Prefer Not To Say'}>Prefer Not To Say</MenuItem>
+          </Select>
+        </FormControl>
       </div>
       <div>
         <label htmlFor="gender" className="label">
           Gender
         </label>
-        <div>
-          <select
+        <FormControl fullWidth>
+          <Select
             name="gender"
             id="gender"
+            labelId="gender"
             onChange={handleChange}
             value={formData.gender}>
-            <option></option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Non-Binary</option>
-            <option>Other</option>
-            <option>Prefer Not to Say</option>
-          </select>
-        </div>
-        {/* {formErrors.gender && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.gender}</Alert>
-          </Stack>
-        )} */}
+            <MenuItem value={''}></MenuItem>
+            <MenuItem value={'Male'}>Male</MenuItem>
+            <MenuItem value={'Female'}>Female</MenuItem>
+            <MenuItem value={'Non-Binary'}>Non-Binary</MenuItem>
+            <MenuItem value={'Other'}>Other</MenuItem>
+            <MenuItem value={'Prefer Not To Say'}>Prefer Not To Say</MenuItem>
+          </Select>
+        </FormControl>
       </div>
       <div>
         <label htmlFor="sexualOrientation" className="label">
           Sexual Orientation
         </label>
-        <div>
-          <select
+        <FormControl fullWidth>
+          <Select
             name="sexualOrientation"
             id="sexualOrientation"
+            labelId="sexualOrientation"
             onChange={handleChange}
             value={formData.sexualOrientation}>
-            <option></option>
-            <option>Gay</option>
-            <option>Straight</option>
-            <option>Bisexual</option>
-            <option>Lesbian</option>
-            <option>Allosexual</option>
-            <option>Androsexual</option>
-            <option>Asexual</option>
-            <option>Autosexual</option>
-            <option>Bicurious</option>
-            <option>Demisexual</option>
-            <option>Fluid</option>
-            <option>Graysexual</option>
-            <option>Gynesexual</option>
-            <option>Monosexual</option>
-            <option>Omnisexual</option>
-            <option>Pansexual</option>
-            <option>Polysexual</option>
-            <option>Queer</option>
-            <option>Questioning</option>
-            <option>Skoliosexual</option>
-            <option>Spectrasexual</option>
-            <option>Not Listed</option>
-          </select>
-        </div>
-        {/* {formErrors.sexualOrientation && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.sexualOrientation}</Alert>
-          </Stack>
-        )} */}
+            <MenuItem value={''}></MenuItem>
+            <MenuItem value={'Gay'}>Gay</MenuItem>
+            <MenuItem value={'Straight'}>Straight</MenuItem>
+            <MenuItem value={'Bisexual'}>Bisexual</MenuItem>
+            <MenuItem value={'Lesbian'}>Lesbian</MenuItem>
+            <MenuItem value={'Allosexual'}>Allosexual</MenuItem>
+            <MenuItem value={'Asexual'}>Asexual</MenuItem>
+            <MenuItem value={'Androsexual'}>Androsexual</MenuItem>
+            <MenuItem value={'Autosexual'}>Autosexual</MenuItem>
+            <MenuItem value={'Bicurious'}>Bicurious</MenuItem>
+            <MenuItem value={'Demisexual'}>Demisexual</MenuItem>
+            <MenuItem value={'Fluid'}>Fluid</MenuItem>
+            <MenuItem value={'Gynesexual'}>Gynesexual</MenuItem>
+            <MenuItem value={'Monosexual'}>Monosexual</MenuItem>
+            <MenuItem value={'Omnisexual'}>Omnisexual</MenuItem>
+            <MenuItem value={'Pansexual'}>Pansexual</MenuItem>
+            <MenuItem value={'Polysexual'}>Polysexual</MenuItem>
+            <MenuItem value={'Queer'}>Queer</MenuItem>
+            <MenuItem value={'Questioning'}>Questioning</MenuItem>
+            <MenuItem value={'Skoliosexual'}>Skoliosexual</MenuItem>
+            <MenuItem value={'Spectrasexual'}>Spectrasexual</MenuItem>
+            <MenuItem value={'Not Listed'}>Not Listed</MenuItem>
+          </Select>
+        </FormControl>
       </div>
       <div>
         <label htmlFor="lookingFor" className="label">
           Looking For
         </label>
-        <div>
-          <select
+        <FormControl fullWidth>
+          <Select
             name="lookingFor"
             id="lookingFor"
+            labelId="lookingFor"
             onChange={handleChange}
             value={formData.lookingFor}>
-            <option></option>
-            <option>Chat</option>
-            <option>Dates</option>
-            <option>Friends</option>
-            <option>Networking</option>
-            <option>Relationship</option>
-            <option>Right Now</option>
-          </select>
-        </div>
-        {/* {formErrors.lookingFor && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.lookingFor}</Alert>
-          </Stack>
-        )} */}
+            <MenuItem value={''}></MenuItem>
+            <MenuItem value={'Chat'}>Chat</MenuItem>
+            <MenuItem value={'Dates'}>Dates</MenuItem>
+            <MenuItem value={'Friends'}>Friends</MenuItem>
+            <MenuItem value={'Networking'}>Networking</MenuItem>
+            <MenuItem value={'Relationship'}>Relationship</MenuItem>
+            <MenuItem value={'Right Now'}>Right Now</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+      <div>
+        <label htmlFor="religion" className="label">
+          Religion
+        </label>
+        <FormControl fullWidth>
+          <Select
+            name="religion"
+            id="religion"
+            labelId="religion"
+            onChange={handleChange}
+            value={formData.religion}>
+            <MenuItem value={''}></MenuItem>
+            <MenuItem value={'Buddhist'}>Buddhist</MenuItem>
+            <MenuItem value={'Christian'}>Catholic</MenuItem>
+            <MenuItem value={'Hindu'}>Hindu</MenuItem>
+            <MenuItem value={'Jewish'}>Jewish</MenuItem>
+            <MenuItem value={'Muslim'}>Muslim</MenuItem>
+            <MenuItem value={'Spiritual'}>Spiritual</MenuItem>
+            <MenuItem value={'Agnostic'}>Agnostic</MenuItem>
+            <MenuItem value={'Athiest'}>Atheist</MenuItem>
+            <MenuItem value={'Other'}>Other</MenuItem>
+            <MenuItem value={'Prefer Not To Say'}>Prefer Not To Say</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+      <div>
+        <label htmlFor="dietaryRequirements" className="label">
+          Dietary Requirements
+        </label>
+        <FormControl fullWidth>
+          <Select
+            name="dietaryRequirements"
+            id="dietaryRequirements"
+            labelId="dietaryRequirements"
+            onChange={handleChange}
+            value={formData.dietaryRequirements}>
+            <MenuItem value={''}></MenuItem>
+            <MenuItem value={'Vegetarian'}>Vegetarian</MenuItem>
+            <MenuItem value={'Vegan'}>Vegan</MenuItem>
+            <MenuItem value={'Gluten Free'}>Gluten Free</MenuItem>
+            <MenuItem value={'Dairy Free'}>Dairy Free</MenuItem>
+            <MenuItem value={'Pesatarian'}>Pescatarian</MenuItem>
+            <MenuItem value={'Paleo'}>Paleo</MenuItem>
+            <MenuItem value={'Keto'}>Keto</MenuItem>
+            <MenuItem value={'Kosher'}>Kosher</MenuItem>
+            <MenuItem value={'Halal'}>Halal</MenuItem>
+          </Select>
+        </FormControl>
       </div>
       <div>
         <label htmlFor="human" className="label">
-          Human
+          Human Status
         </label>
-        <div>
-          <label className="radio">
-            <input
-              type="radio"
-              name="human"
-              id="human"
-              value="Have Human"
-              onChange={handleChange}
-              checked={formData.human === 'Have Human'}
-            />
-            Have Human
-          </label>
-          <label className="radio">
-            <input
-              type="radio"
-              name="human"
-              id="human"
-              value="Want Human"
-              onChange={handleChange}
-              checked={formData.human === 'Want Human'}
-            />
-            Want Human
-          </label>
-          <label className="radio">
-            <input
-              type="radio"
-              name="human"
-              id="human"
-              value="Dont Want Human"
-              onChange={handleChange}
-              checked={formData.human === 'Dont Want Human'}
-            />
-            Don&apos;t Want Human
-          </label>
-          <label className="radio">
-            <input
-              type="radio"
-              name="human"
-              id="human"
-              value="preferNotToSay"
-              onChange={handleChange}
-              checked={formData.human === 'preferNotToSay'}
-            />
-            Prefer Not To Say
-          </label>
-        </div>
-        {/* {formErrors.human && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.human}</Alert>
-          </Stack>
-        )} */}
+        <RadioGroup row aria-label="Human" name="row-radio-buttons-group">
+          <FormControlLabel
+            label="Have Human"
+            control={<Radio
+              sx={{
+                color: deepPurple[800],
+                '&.Mui-checked': {
+                  color: deepPurple[600],
+                },
+              }} />}
+            type="radio"
+            name="human"
+            id="human"
+            value="Have Human"
+            onChange={handleChange}
+            checked={formData.human === 'Have Human'}
+          />
+          <FormControlLabel
+            label="Want Human"
+            control={<Radio
+              sx={{
+                color: deepPurple[800],
+                '&.Mui-checked': {
+                  color: deepPurple[600],
+                },
+              }} />}
+            type="radio"
+            name="human"
+            id="human"
+            value="Want Human"
+            onChange={handleChange}
+            checked={formData.human === 'Want Human'}
+          />
+          <FormControlLabel
+            label="Don't Want Human"
+            control={<Radio
+              sx={{
+                color: deepPurple[800],
+                '&.Mui-checked': {
+                  color: deepPurple[600],
+                },
+              }} />}
+            type="radio"
+            name="human"
+            id="human"
+            value="Dont Want Human"
+            onChange={handleChange}
+            checked={formData.human === 'Dont Want Human'}
+          />
+          <FormControlLabel
+            label="Prefer Not To Say"
+            control={<Radio
+              sx={{
+                color: deepPurple[800],
+                '&.Mui-checked': {
+                  color: deepPurple[600],
+                },
+              }} />}
+            type="radio"
+            name="human"
+            id="human"
+            value="Prefer Not To Say"
+            onChange={handleChange}
+            checked={formData.human === 'Prefer Not To Say'}
+          />
+        </RadioGroup>
+      </div>
+      <div>
+        <label htmlFor="Children" className="label">
+          Children Status
+        </label>
+        <RadioGroup
+          row aria-label="Children" name="row-radio-buttons-group">
+          <FormControlLabel
+            label="Have Children"
+            control={<Radio
+              sx={{
+                color: deepPurple[800],
+                '&.Mui-checked': {
+                  color: deepPurple[600],
+                },
+              }} />}
+            type="radio"
+            name="children"
+            id="children"
+            value="Have Children"
+            onChange={handleChange}
+            checked={formData.children === 'Have Children'}
+          />
+          <FormControlLabel
+            label="Want Children"
+            control={<Radio
+              sx={{
+                color: deepPurple[800],
+                '&.Mui-checked': {
+                  color: deepPurple[600],
+                },
+              }} />}
+            type="radio"
+            name="children"
+            id="children"
+            value="Want Children"
+            onChange={handleChange}
+            checked={formData.children === 'Want Children'}
+          />
+          <FormControlLabel
+            label="Don't Want Children"
+            control={<Radio
+              sx={{
+                color: deepPurple[800],
+                '&.Mui-checked': {
+                  color: deepPurple[600],
+                },
+              }} />}
+            type="radio"
+            name="children"
+            id="children"
+            value="Dont Want Children"
+            onChange={handleChange}
+            checked={formData.children === 'Dont Want Children'}
+          />
+          <FormControlLabel
+            label="Prefer Not To Say"
+            control={<Radio
+              sx={{
+                color: deepPurple[800],
+                '&.Mui-checked': {
+                  color: deepPurple[600],
+                },
+              }} />}
+            type="radio"
+            name="children"
+            id="children"
+            value="Prefer Not To Say"
+            onChange={handleChange}
+            checked={formData.children === 'Prefer Not To Say'}
+          />
+        </RadioGroup>
       </div>
       <div>
         <label htmlFor="drinking" className="label">
-          Drinking
-        </label>
-        <div>
-          <label className="checkbox">
+          <Checkbox
+            className="checkbox"
+            value="checkbox"
+            sx={{
+              color: deepPurple[800],
+              '&.Mui-checked': {
+                color: deepPurple[600],
+              },
+            }}
+          >
             <input
               type="checkbox"
               name="drinking"
@@ -373,21 +538,22 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData }) 
               onChange={handleChange}
               checked={formData.drinking}
             />
-            I like a drink
-          </label>
-        </div>
-        {/* {formErrors.drinking && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.drinking}</Alert>
-          </Stack>
-        )} */}
+          </Checkbox>
+          I Like A Drink
+        </label>
       </div>
       <div>
         <label htmlFor="smoking" className="label">
-          Smoking
-        </label>
-        <div>
-          <label className="checkbox">
+          <Checkbox
+            className="checkbox"
+            value="checkbox"
+            sx={{
+              color: deepPurple[800],
+              '&.Mui-checked': {
+                color: deepPurple[600],
+              },
+            }}
+          >
             <input
               type="checkbox"
               name="smoking"
@@ -395,155 +561,38 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData }) 
               onChange={handleChange}
               checked={formData.smoking}
             />
-            I like a smoke
-          </label>
-        </div>
-        {/* {formErrors.smoking && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.smoking}</Alert>
-          </Stack>
-        )} */}
-      </div>
-      <div>
-        <label htmlFor="religion" className="label">
-          Religion
+          </Checkbox>
+          I Like A Smoke
         </label>
-        <div>
-          <select
-            name="religion"
-            id="religion"
-            onChange={handleChange}
-            value={formData.religion}>
-            <option></option>
-            <option>Buddhist</option>
-            <option>Catholic</option>
-            <option>Christian</option>
-            <option>Hindu</option>
-            <option>Jewish</option>
-            <option>Muslim</option>
-            <option>Spiritual</option>
-            <option>Agnostic</option>
-            <option>Atheist</option>
-            <option>Other</option>
-            <option>Prefer Not to Say</option>
-          </select>
-        </div>
-        {/* {formErrors.religion && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.religion}</Alert>
-          </Stack>
-        )} */}
       </div>
       <div>
         <label htmlFor="houseTrained" className="label">
-          House Trained
-        </label>
-        <div>
-          <label className="checkbox">
-            <input
-              type="checkbox"
-              name="houseTrained"
-              id="houseTrained"
-              onChange={handleChange}
-              checked={formData.houseTrained}
-            />
-            I know where to pee
-          </label>
-        </div>
-        {/* {formErrors.houseTrained && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.houseTrained}</Alert>
-          </Stack>
-        )} */}
-      </div>
-      <div>
-        <label htmlFor="dietaryRequirements" className="label">
-          Dietary Requirements
-        </label>
-        <div>
-          <select
-            name="dietaryRequirements"
-            id="dietaryRequirements"
+          <Checkbox
+            className="checkbox"
+            sx={{
+              color: deepPurple[800],
+              '&.Mui-checked': {
+                color: deepPurple[600],
+              },
+            }}
+            value="checkbox"
+            type="checkbox"
+            name="houseTrained"
+            id="houseTrained"
             onChange={handleChange}
-            value={formData.dietaryRequirements}>
-            <option></option>
-            <option>Vegetarian</option>
-            <option>Vegan</option>
-            <option>Gluten Free</option>
-            <option>Dairy Free</option>
-            <option>Pescatarian</option>
-            <option>Paleo</option>
-            <option>Keto</option>
-            <option>Kosher</option>
-            <option>Halal</option>
-          </select>
-        </div>
-        {/* {formErrors.dietaryRequirements && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.dietaryRequirements}</Alert>
-          </Stack>
-        )} */}
-      </div>
-      <div>
-        <label htmlFor="children" className="label">
-          Children
+            checked={formData.houseTrained}
+          >
+          </Checkbox>
+          I Know Where To Pee
         </label>
-        <div>
-          <label className="radio">
-            <input
-              type="radio"
-              name="children"
-              id="children"
-              value="Have Children"
-              onChange={handleChange}
-              checked={formData.children === 'Have Children'}
-            />
-            Have Children
-          </label>
-          <label className="radio">
-            <input
-              type="radio"
-              name="children"
-              id="children"
-              value="Want Children"
-              onChange={handleChange}
-              checked={formData.children === 'Want Children'}
-            />
-            Want Children
-          </label>
-          <label className="radio">
-            <input
-              type="radio"
-              name="children"
-              id="children"
-              value="Dont Want Children"
-              onChange={handleChange}
-              checked={formData.children === 'Dont Want Children'}
-            />
-            Don&apos;t Want Children
-          </label>
-          <label className="radio">
-            <input
-              type="radio"
-              name="children"
-              id="children"
-              value="Prefer Not To Say"
-              onChange={handleChange}
-              checked={formData.children === 'Prefer Not To Say'}
-            />
-            Prefer Not To Say
-          </label>
-        </div>
-        {/* {formErrors.human && (
-          <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert variant="outlined" severity="error">{formErrors.human}</Alert>
-          </Stack>
-        )} */}
       </div>
       <div>
-        <button type="submit">
+        <Button
+          size="large"
+          type="submit"
+        >
           Update
-        </button>
+        </Button>
       </div>
     </form>
   )

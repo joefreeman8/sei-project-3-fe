@@ -21,6 +21,7 @@ function ChatShow() {
 
 
   React.useEffect(() => {
+
     const getData = async () => {
       try {
         const { data } = await getSingleChat(chatId)
@@ -37,7 +38,11 @@ function ChatShow() {
       }
     }
     getData()
+    const interval = setInterval(getData, 500)
+    return () => clearInterval(interval)
   }, [chatId, currentUserId, receiverId])
+
+  console.log(allMessages)
 
 
   const handleChange = (e) => {
