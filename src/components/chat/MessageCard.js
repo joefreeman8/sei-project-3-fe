@@ -8,7 +8,7 @@ import { IconButton } from '@mui/material'
 
 
 
-function MessageCard({ singleMessage, allMessages, setAllMessages }) {
+function MessageCard({ singleMessage, setAllMessages }) {
   const currentUserId = JSON.parse(localStorage.getItem('userId'))
   const [isSender, setIsSender] = React.useState(false)
   const { chatId } = useParams()
@@ -19,8 +19,6 @@ function MessageCard({ singleMessage, allMessages, setAllMessages }) {
       setIsSender(true)
     }
   }, [currentUserId, singleMessage.sender])
-
-  // console.log('all', allMessages)
 
   const handleDelete = async () => {
     if (window.confirm('Do you want to delete this message?')) {
