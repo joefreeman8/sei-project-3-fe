@@ -63,7 +63,7 @@ function ChatShow() {
 
   return (
     <div>
-      <Card sx={{ width: '50%', mx: 'auto', display: 'flex', flexDirection: 'column', mt: 4, alignItems: 'center' }} >
+      <Card sx={{ width: '50%', mx: 'auto', display: 'flex', flexDirection: 'column', mt: 10, alignItems: 'center' }} >
         <h3 className='purple margin-top'>{receiverName}</h3>
         <div className='chat-card'>
           {allMessages && allMessages.map(singleMessage => {

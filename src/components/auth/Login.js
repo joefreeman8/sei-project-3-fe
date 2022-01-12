@@ -55,7 +55,7 @@ function Login() {
       setToken(res.data.token)
       profiles.filter(profile => {
         if (profile.email === email) {
-          {localStorage.setItem('userId', JSON.stringify(profile._id))}
+          { localStorage.setItem('userId', JSON.stringify(profile._id)) }
         } else return
       })
       navigate('/potentialsniffs')
@@ -67,7 +67,6 @@ function Login() {
   return (
     <div>
       <Card sx={{ width: '50%', p: 5, mx: 'auto', mt: 10, display: 'flex' }}>
-
         <form onSubmit={handleSubmit} className="login-form">
           <div>
             <p className="go-login-signup"> No account?
@@ -76,10 +75,9 @@ function Login() {
           </div>
           <div className="credentials">
             <label className="login-title" htmlFor="email" >
-            Email
+              Email
             </label>
             <Box
-              component="form"
               sx={{
                 '& > :not(style)': { m: 1, width: '25ch' },
               }}
@@ -95,10 +93,9 @@ function Login() {
           </div>
           <div>
             <label className="login-title" htmlFor="password">
-            Password
+              Password
             </label>
             <Box
-              component="form"
               sx={{
                 '& > :not(style)': { m: 1, width: '25ch' },
               }}

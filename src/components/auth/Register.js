@@ -106,7 +106,6 @@ function Register() {
           <div>
             <label htmlFor="email" className="register-title">Email</label>
             <Box
-              component="form"
               sx={{
                 '& > :not(style)': { m: 1, width: '25ch' },
               }}
@@ -123,7 +122,6 @@ function Register() {
           <div>
             <label htmlFor="password" className="register-title">Password</label>
             <Box
-              component="form"
               sx={{
                 '& > :not(style)': { m: 1, width: '25ch' },
               }}
@@ -140,7 +138,6 @@ function Register() {
           <div>
             <label htmlFor="passwordConfirmation" className="register-title">Password Confirmation</label>
             <Box
-              component="form"
               sx={{
                 '& > :not(style)': { m: 1, width: '25ch' },
               }}
@@ -157,7 +154,6 @@ function Register() {
           <div>
             <label htmlFor="animalType" className="register-title">What animal are you?</label>
             <Box
-              component="form"
               sx={{
                 '& > :not(style)': { m: 1, width: '25ch' },
               }}
@@ -211,7 +207,6 @@ function Register() {
           <div>
             <label htmlFor="elevatorPitch" className="register-title">Elevator Pitch</label>
             <Box
-              component="form"
               sx={{
                 '& .MuiTextField-root': { m: 1, width: '25ch' },
               }}>
