@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import { deleteProfile } from '../../lib/api'
+import { deleteProfile, getAllChats, deleteChat } from '../../lib/api'
 import { removeStoredId, removeToken } from '../../lib/auth'
+import React from 'react'
 
 import Card from '@mui/material/Card'
 import Button from '@mui/material/Button'
@@ -8,13 +9,35 @@ import Button from '@mui/material/Button'
 
 function Account() {
   const navigate = useNavigate()
+  const currentUserId = JSON.parse(localStorage.getItem('userId'))
+  const [chats, setChats] = React.useState([])
+
   localStorage.getItem('token')
 
-  const currentUserId = JSON.parse(localStorage.getItem('userId'))
+  React.useEffect(() => {
+    const getChatData = async () => {
+      try {
+        const { data } = await getAllChats()
+        setChats(data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getChatData()
+  }, [])
+
+  chats.map(chat => {
+    console.log(chat._id)
+  })
 
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete your account?')) {
       try {
+        chats.map( async (chat) => {
+          console.log(chat._id)
+          await deleteChat(chat._id)
+          return
+        })
         await deleteProfile(currentUserId)
         removeToken()
         removeStoredId()

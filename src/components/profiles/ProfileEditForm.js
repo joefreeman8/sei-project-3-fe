@@ -42,7 +42,6 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
           <h3>Name</h3>
         </label>
         <Box
-          component="form"
           sx={{
             '& > :not(style)': { m: 1, width: '25ch' },
           }}
@@ -89,7 +88,6 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
           <h3>Elevator Pitch</h3>
         </label>
         <Box
-          component="form"
           sx={{
             '& .MuiTextField-root': { m: 1, width: '25ch' },
           }}>
@@ -116,7 +114,6 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
           <h3>Age</h3>
         </label>
         <Box
-          component="form"
           sx={{
             '& > :not(style)': { m: 1, width: '25ch' },
           }}
@@ -142,7 +139,6 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
           <h3>Height (cm)</h3>
         </label>
         <Box
-          component="form"
           sx={{
             '& > :not(style)': { m: 1, width: '25ch' },
           }}
@@ -166,7 +162,6 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
           <h3>Weight (kg)</h3>
         </label>
         <Box
-          component="form"
           sx={{
             '& > :not(style)': { m: 1, width: '25ch' },
           }}
@@ -192,7 +187,6 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
           <h3>Animal Type</h3>
         </label>
         <Box
-          component="form"
           sx={{
             '& > :not(style)': { m: 1, width: '25ch' },
           }}

@@ -79,7 +79,6 @@ function Login() {
             Email
             </label>
             <Box
-              component="form"
               sx={{
                 '& > :not(style)': { m: 1, width: '25ch' },
               }}
@@ -98,7 +97,6 @@ function Login() {
             Password
             </label>
             <Box
-              component="form"
               sx={{
                 '& > :not(style)': { m: 1, width: '25ch' },
               }}

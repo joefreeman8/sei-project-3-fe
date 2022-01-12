@@ -59,6 +59,8 @@ export function createChat(formData) {
 }
 
 export function deleteChat(chatId) {
+  console.log(chatId)
+  console.log(headers())
   return axios.delete(`${baseUrl}/chat/${chatId}`, headers())
 }
 

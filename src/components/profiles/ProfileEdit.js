@@ -63,7 +63,7 @@ function ProfileEdit() {
   }
   console.log(formData)
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(userId, formData)
     try {
