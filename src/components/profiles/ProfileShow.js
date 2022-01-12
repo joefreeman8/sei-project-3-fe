@@ -106,7 +106,7 @@ function ProfileShow() {
 
 
   return (
-    <Card sx={{ width: '80%', mx: 'auto', display: 'flex', mt: 4 }} >
+    <Card sx={{ width: '80%', mx: 'auto', display: 'flex', mt: 10, pt: 5, pb: 5 }} >
       {isError && <Error />}
       {isLoading && <Loading />}
       {profile && (
