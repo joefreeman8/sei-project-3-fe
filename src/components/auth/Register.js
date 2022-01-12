@@ -11,7 +11,7 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 // import InputAdornment from '@mui/material/InputAdornment'
 // import InputLabel from '@mui/material/InputLabel'
-// import MenuItem from '@mui/material/MenuItem'
+import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import Card from '@mui/material/Card'
@@ -181,13 +181,13 @@ function Register() {
                 id="lookingFor"
                 onChange={handleChange}
                 value={formData.lookingFor}>
-                <option></option>
-                <option>Chat</option>
-                <option>Dates</option>
-                <option>Friends</option>
-                <option>Networking</option>
-                <option>Relationship</option>
-                <option>Right Now</option>
+                <MenuItem value={''}></MenuItem>
+                <MenuItem value={'Chat'}>Chat</MenuItem>
+                <MenuItem value={'Dates'}>Dates</MenuItem>
+                <MenuItem value={'Friends'}>Friends</MenuItem>
+                <MenuItem value={'Networking'}>Networking</MenuItem>
+                <MenuItem value={'Relationship'}>Relationship</MenuItem>
+                <MenuItem value={'Right Now'}>Right Now</MenuItem>
               </Select>
             </FormControl>
 
