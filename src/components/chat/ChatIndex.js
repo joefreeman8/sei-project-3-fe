@@ -24,7 +24,7 @@ function ChatIndex() {
 
   return (
     <div>
-      <Card sx={{ width: '70%', mx: 'auto', display: 'flex', flexDirection: 'column', mt: 4, alignItems: 'center' }} >
+      <Card sx={{ width: '70%', mx: 'auto', display: 'flex', flexDirection: 'column', p: 10, pt: 5, pb: 5, mt: 10, alignItems: 'center' }} >
 
         <Box  sx={{ p: 2 }}>
           <h3 className='purple'>Message Your Potential Sniffs</h3>
