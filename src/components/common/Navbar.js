@@ -8,7 +8,6 @@ import logoPurple from '../../assets/logoPurple.png'
 import { Button } from '@mui/material'
 
 function Navbar() {
-  // const { pathname } = useLocation()
   const navigate = useNavigate()
   const isAuth = isAuthenticated()
   const [sidebarShow, setSidebarShow] = React.useState(false)
@@ -79,7 +78,3 @@ function Navbar() {
 }
 
 export default Navbar
-
-
-// <p><Link to="/register" className="nav-item-button" id="auth-button">Register</Link></p>
-// <p><Link to="/login" className="nav-item-button" id="auth-button">Log In</Link></p>

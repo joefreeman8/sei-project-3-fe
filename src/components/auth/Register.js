@@ -6,11 +6,8 @@ import { setToken } from '../../lib/auth'
 import { loginUser, getAllProfiles } from '../../lib/api'
 
 
-// import FormControlLabel from '@mui/material/FormControlLabel'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
-// import InputAdornment from '@mui/material/InputAdornment'
-// import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'

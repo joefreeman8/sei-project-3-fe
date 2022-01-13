@@ -12,7 +12,6 @@ function ChatIndex() {
     const getChatData = async () => {
       try {
         const { data } = await getAllChats()
-        // console.log(data)
         setChats(data)
       } catch (err) {
         console.log(err)
