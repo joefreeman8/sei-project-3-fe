@@ -44,7 +44,6 @@ function ProfileEdit() {
     const getData = async () => {
       try {
         const res = await getSingleProfile(userId)
-        // console.log(res.data)
         setFormData(res.data)
       } catch (err) {
         console.log(err)
@@ -54,7 +53,6 @@ function ProfileEdit() {
     getData()
   }, [setFormData, userId])
 
-  // console.log(formData)
 
   const handleChange = e => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
