@@ -208,7 +208,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
         <div>
           <FormControl sx={{ m: 1, width: '50%' }}>
             <Select
-              name=""
+              name="bodyType"
               id="bodyType"
               labelId="bodyType"
               onChange={handleChange}
@@ -232,7 +232,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
         <div>
           <FormControl sx={{ m: 1, width: '50%' }}>
             <Select
-              name=""
+              name="politicalView"
               id="politicalView"
               labelId="politicalView"
               onChange={handleChange}
@@ -276,7 +276,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
         <div>
           <FormControl sx={{ m: 1, width: '50%' }}>
             <Select
-              name=""
+              name="sexualOrientation"
               id="sexualOrientation"
               labelId="sexualOrientation"
               onChange={handleChange}
@@ -337,7 +337,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
         <div>
           <FormControl sx={{ m: 1, width: '50%' }}>
             <Select
-              name=""
+              name="religion"
               id="religion"
               labelId="religion"
               onChange={handleChange}
@@ -374,7 +374,7 @@ function ProfileEditPage({ handleSubmit, handleChange, formData, setFormData, fo
               <MenuItem value={'Vegan'}>Vegan</MenuItem>
               <MenuItem value={'Gluten Free'}>Gluten Free</MenuItem>
               <MenuItem value={'Dairy Free'}>Dairy Free</MenuItem>
-              <MenuItem value={'Pesatarian'}>Pescatarian</MenuItem>
+              <MenuItem value={'Pescatarian'}>Pescatarian</MenuItem>
               <MenuItem value={'Paleo'}>Paleo</MenuItem>
               <MenuItem value={'Keto'}>Keto</MenuItem>
               <MenuItem value={'Kosher'}>Kosher</MenuItem>
