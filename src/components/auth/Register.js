@@ -45,7 +45,6 @@ function Register() {
   }
 
   const handleSubmit = async (e) => {
-    console.log('pre-register', formData)
     e.preventDefault()
     try {
       await registerUser(formData)
@@ -54,11 +53,9 @@ function Register() {
       setToken(res.data.token)
       const userId = allProfiles.data.find(profile => {
         if (profile.email === formData.email) {
-          console.log(profile._id)
           return profile
         } else return
       })._id
-      console.log(userId)
       localStorage.setItem('userId', JSON.stringify(userId))
       navigate(`/account/${userId}/edit`)
     } catch (err) {

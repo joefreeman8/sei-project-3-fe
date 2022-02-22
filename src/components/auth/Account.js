@@ -26,15 +26,10 @@ function Account() {
     getChatData()
   }, [])
 
-  chats.map(chat => {
-    console.log(chat._id)
-  })
-
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete your account?')) {
       try {
         chats.map( async (chat) => {
-          console.log(chat._id)
           await deleteChat(chat._id)
           return
         })
