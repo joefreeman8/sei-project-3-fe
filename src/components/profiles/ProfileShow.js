@@ -127,7 +127,7 @@ function ProfileShow() {
 
             <Grid item xs={6}>
               <CardContent>
-                <Typography variant ="h5">{profile.name}</Typography>
+                <Typography variant="h5">{profile.name}</Typography>
                 <Typography gutterBottom variant="body2" component="div">
                   {profile.age && <div><strong>Age: </strong>{profile.age}</div>}
                   {profile.height && <div><strong>Height: </strong>{profile.height}cm</div>}
@@ -162,13 +162,13 @@ function ProfileShow() {
                         size="large"
                         id='purple-button'
                         onClick={handleMessageButtonClick}>
-                    Message
+                        Message
                       </Button>
                       : <form onSubmit={createNewChat}>
                         <div className="control">
-                          <TextField  
-                            id="outlined-basic" 
-                            name="content" 
+                          <TextField
+                            id="outlined-basic"
+                            name="content"
                             label={`Message ${profile.name}`}
                             onChange={handleChange}
                             variant="outlined" />
